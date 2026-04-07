@@ -2,27 +2,61 @@
  * Customizable Select Element
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/appearance#base-select
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/::picker(select)
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/selectedcontent
+ * Reference: https://developer.chrome.com/blog/a-customizable-select
  * Baseline: 🟣 Experimental (Chrome 135+)
  * Support: ~30%
  *
  * Task: Style native <select> with full visual control — picker, options, icons, animations
  * Why: Replaces JS-heavy custom dropdowns with native semantics, accessibility, and keyboard support
+ *      Progressive enhancement — non-supporting browsers get standard <select> with no breakage
  */
 
+
+/* ==========================================================================
+   HOW IT WORKS
+
+   appearance: base-select removes OS chrome and enables:
+   - Rich HTML inside <option> (images, SVG, spans — previously stripped)
+   - Picker rendered in top-layer (like popover)
+   - Picker positioned via anchor() relative to select button
+   - New pseudo-elements: ::picker(select), ::picker-icon, ::checkmark
+   - New pseudo-class: :open (select button when picker is visible)
+   - <selectedcontent> element clones selected option into the button
+
+   HTML STRUCTURE:
+     <select>
+       <button>                           ← custom trigger (must be first child, inert)
+         <selectedcontent></selectedcontent>  ← cloned preview of selected option
+       </button>
+       <option value="a">
+         <span class="icon" aria-hidden="true">🍎</span>
+         <span class="label">Apple</span>
+       </option>
+       <optgroup>
+         <legend>Citrus</legend>
+         <option value="b">Orange</option>
+       </optgroup>
+     </select>
+   ========================================================================== */
+
+
 /* ============================================================
- * 1. Opt In — appearance: base-select
- * Removes OS chrome, enables browser base styles.
+ * 1. OPT IN — appearance: base-select
  * Both the select AND its picker must opt in.
- * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/appearance
+ * This changes the HTML parser behavior inside <select>.
  * ============================================================ */
 select,
 ::picker(select) {
   appearance: base-select;
 }
 
+
 /* ============================================================
- * 2. Select Button
- * After opt-in the <select> itself renders as the trigger button.
+ * 2. SELECT BUTTON
+ * After opt-in, <select> itself renders as the trigger button.
  * ============================================================ */
 select {
   font: inherit;
@@ -42,25 +76,31 @@ select:focus-visible {
   outline: none;
 }
 
+/* :open — select button when picker is visible */
+select:open {
+  border-color: oklch(0.5 0.18 270);
+  background: oklch(0.92 0.03 270);
+}
+
+
 /* ============================================================
- * 3. Picker Icon — ::picker-icon
- * The dropdown arrow rendered inside the button.
- * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/::picker-icon
+ * 3. PICKER ICON — ::picker-icon
+ * The dropdown arrow inside the button. Rotates when open.
  * ============================================================ */
 select::picker-icon {
   color: oklch(0.55 0 0);
   transition: rotate 0.35s ease;
 }
 
-/* Rotate arrow when open */
 select:open::picker-icon {
   rotate: 180deg;
 }
 
+
 /* ============================================================
- * 4. Drop-Down Picker — ::picker(select)
- * The popover that contains options.
- * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/::picker(select)
+ * 4. DROP-DOWN PICKER — ::picker(select)
+ * The popover containing all options. Rendered in top-layer.
+ * Has an implicit anchor reference to the select button.
  * ============================================================ */
 ::picker(select) {
   border: 2px solid oklch(0.85 0 0);
@@ -78,12 +118,13 @@ select:open::picker-icon {
     overlay 0.3s allow-discrete;
 }
 
+/* Picker uses popover — :popover-open for visible state */
 ::picker(select):popover-open {
   opacity: 1;
   translate: 0 0;
 }
 
-/* Initial state for entry animation */
+/* @starting-style for entry animation */
 @starting-style {
   ::picker(select):popover-open {
     opacity: 0;
@@ -91,9 +132,19 @@ select:open::picker-icon {
   }
 }
 
+/* Anchor positioning — picker relative to select button */
+/*
+::picker(select) {
+  top: calc(anchor(bottom) + 4px);
+  left: anchor(left);
+}
+*/
+
+
 /* ============================================================
- * 5. Option Styling
- * With base-select, <option> accepts display, flexbox, etc.
+ * 5. OPTION STYLING
+ * With base-select, <option> supports display, flexbox,
+ * rich HTML content (SVG, images, multiple spans).
  * ============================================================ */
 option {
   display: flex;
@@ -116,43 +167,80 @@ option:checked {
   background: oklch(0.95 0.03 270);
 }
 
+/* Zebra striping */
+option:nth-of-type(odd) {
+  background: oklch(0.98 0 0);
+}
+
+/* Rich content icons */
+option .icon {
+  font-size: 1.6rem;
+  text-box: trim-both cap alphabetic;
+  /* aria-hidden="true" on decorative icons to avoid duplicate announcements */
+}
+
+/* SVG icons inside options */
+option svg {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+
 /* ============================================================
- * 6. Checkmark — ::checkmark
+ * 6. CHECKMARK — ::checkmark
  * Indicator on the currently selected option.
- * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/::checkmark
+ * Can be repositioned with flexbox and restyled with content.
+ * Not included in accessibility tree.
  * ============================================================ */
 option::checkmark {
   order: 1;
   margin-inline-start: auto;
+  /* content: "☑️"; — override default checkmark */
 }
+
 
 /* ============================================================
  * 7. <selectedcontent> — Cloned Preview
  * Placed inside an explicit <button> child of <select>.
- * Displays a clone of the currently selected <option>.
+ * Clones the currently selected <option> into the button.
+ * Can be styled differently from the picker options.
  *
- * HTML structure:
+ * HTML:
  *   <select>
  *     <button><selectedcontent></selectedcontent></button>
  *     <option value="a"><span class="icon">🍎</span> Apple</option>
- *     <option value="b"><span class="icon">🍊</span> Orange</option>
  *   </select>
- *
- * MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/selectedcontent
  * ============================================================ */
+
+/* Differential styling — hide icons in closed select but keep in picker */
 selectedcontent .icon {
-  /* Optionally hide icons in the collapsed trigger */
-  /* display: none; */
+  display: none;
 }
 
+/* Or show only the icon and hide the label */
+/*
+selectedcontent .label {
+  display: none;
+}
+*/
+
+
 /* ============================================================
- * 8. Grouped Options with <optgroup> + <legend>
+ * 8. GROUPED OPTIONS — <optgroup> + <legend>
  *
  *   <optgroup>
  *     <legend>Fruits</legend>
  *     <option>Apple</option>
  *   </optgroup>
  * ============================================================ */
+optgroup {
+  border: 1px solid oklch(0.9 0 0);
+  border-radius: 0.5rem;
+  padding-block-start: 0.25rem;
+  margin-block-start: 0.25rem;
+}
+
 optgroup legend {
   font-size: 0.75rem;
   font-weight: 700;
@@ -161,19 +249,82 @@ optgroup legend {
   color: oklch(0.55 0 0);
   padding-block: 0.375rem;
   padding-inline: 0.625rem;
+  text-align: center;
 }
 
+
 /* ============================================================
- * 9. @supports Fallback
- * Graceful degradation — non-supporting browsers get the
+ * 9. @supports FALLBACK
+ * Progressive enhancement — non-supporting browsers get the
  * standard <select> with no visual breakage.
+ * The <button> and <selectedcontent> are ignored.
+ * Rich content in <option> is stripped to text nodes.
  * ============================================================ */
 @supports not (appearance: base-select) {
   select {
-    /* Standard select styling for older browsers */
     padding: 0.5rem;
-    border: 1px solid #ccc;
+    border: 1px solid oklch(0.75 0 0);
     border-radius: 0.25rem;
-    background: #fff;
+    background: oklch(0.98 0 0);
   }
 }
+
+
+/* ============================================================
+ * 10. LISTBOX MODE — <select multiple> and <select size> (Chrome 145+)
+ * Renders in-flow as a visible list, not as a popup picker.
+ * Same base-select opt-in, same styling primitives.
+ *
+ * <select multiple>
+ *   <option>Option A</option>
+ *   <option>Option B</option>
+ * </select>
+ * ============================================================ */
+select[multiple],
+select[size] {
+  appearance: base-select;
+  border: 2px solid oklch(0.8 0 0);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+}
+
+select[multiple] option,
+select[size] option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-block: 0.5rem;
+  padding-inline: 0.625rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+select[multiple] option:checked,
+select[size] option:checked {
+  background: oklch(0.92 0.06 270);
+  font-weight: 600;
+}
+
+
+/* ============================================================
+ * 11. COMPLETE EXAMPLE — Country picker with flags
+ *
+ * <select>
+ *   <button><selectedcontent></selectedcontent></button>
+ *   <option value="us">
+ *     <img src="flags/us.svg" alt="" width="20" height="15">
+ *     <span class="label">United States</span>
+ *   </option>
+ *   <option value="sk">
+ *     <img src="flags/sk.svg" alt="" width="20" height="15">
+ *     <span class="label">Slovakia</span>
+ *   </option>
+ * </select>
+ *
+ * option img {
+ *   inline-size: 1.25rem;
+ *   block-size: auto;
+ *   border-radius: 0.125rem;
+ * }
+ * ============================================================ */

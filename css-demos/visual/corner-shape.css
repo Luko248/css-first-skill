@@ -1,32 +1,62 @@
 /**
  * CSS corner-shape Property
  *
- * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/corner-shape
- * Reference: https://css-tricks.com/what-can-we-actually-do-with-corner-shape/
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/corner-shape
+ * Reference: https://developer.chrome.com/blog/implementing-corner-shape?hl=en
+ * Spec: CSS Borders and Box Decorations Module Level 4
  * Baseline: 🟣 Experimental
  * Support: Chrome 139+
  *
  * Task: Create modern border shapes — bevels, scoops, squircles, notches, tooltip arrows
  * Why: corner-shape goes beyond round corners to create distinctive UI shapes
  *      with a single property — no SVG or clip-path workarounds needed
- * Last verified: 2026-02
+ *
+ * CRITICAL: corner-shape has NO EFFECT without an active border-radius.
+ * If border-radius is 0 or unset, corner-shape is ignored.
+ * Last verified: 2026-04
  */
 
 
 /* ==========================================================================
    VALUES REFERENCE
 
-   round           — default, same as standard border-radius
-   squircle        — smooth square-circle hybrid (superellipse(2))
-   bevel           — straight diagonal cut (superellipse(0))
-   scoop           — concave inward curve (superellipse(-1))
-   notch           — sharp inward notch (superellipse(-infinity))
-   square          — removes border-radius effect (superellipse(infinity))
-   superellipse(n) — custom curve, n controls shape
+   Keyword          Equivalent              Effect
+   ─────────────────────────────────────────────────────────────────────────
+   round            superellipse(1)         Standard circular rounding (default)
+   squircle         superellipse(2)         Smooth square-circle hybrid (iOS icons)
+   bevel            superellipse(0)         Straight diagonal cut
+   scoop            superellipse(-1)        Concave inward curve
+   notch            superellipse(-infinity) Sharp inward notch
+   square           superellipse(infinity)  Removes border-radius effect
+   superellipse(n)  —                       Custom curve (-∞ to +∞)
 
-   Logical longhands:
-   corner-start-start-shape, corner-start-end-shape,
-   corner-end-start-shape, corner-end-end-shape
+   Positive n → convex (outward), Negative n → concave (inward), 0 → linear
+
+   SHORTHAND (clockwise like border-radius):
+     1 value → all 4 corners
+     2 values → (top-left + bottom-right) | (top-right + bottom-left)
+     3 values → top-left | (top-right + bottom-left) | bottom-right
+     4 values → top-left, top-right, bottom-right, bottom-left
+
+   LONGHAND PROPERTIES (physical):
+     corner-top-left-shape, corner-top-right-shape,
+     corner-bottom-right-shape, corner-bottom-left-shape
+
+   SIDE SHORTHANDS (physical):
+     corner-top-shape, corner-right-shape,
+     corner-bottom-shape, corner-left-shape
+
+   LOGICAL LONGHANDS:
+     corner-start-start-shape, corner-start-end-shape,
+     corner-end-start-shape, corner-end-end-shape
+
+   LOGICAL SIDE SHORTHANDS:
+     corner-block-start-shape, corner-block-end-shape,
+     corner-inline-start-shape, corner-inline-end-shape
+
+   PROPERTIES THAT FOLLOW CORNER SHAPE:
+     background-color, background-image, border, outline,
+     box-shadow, overflow, backdrop-filter
    ========================================================================== */
 
 
@@ -77,6 +107,16 @@
   border-radius: 0.5rem 1.5rem 1.5rem 0.5rem;
 }
 
+/* Scoop with backdrop-filter — shape is followed by all visual properties */
+.scoop-glass {
+  border-radius: 2rem;
+  corner-shape: scoop;
+  background: oklch(1 0 0 / 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px oklch(0 0 0 / 0.1);
+  /* backdrop-filter, box-shadow, and background all follow scoop shape */
+}
+
 
 /* ==========================================================================
    4. NOTCH — sharp inward cuts
@@ -95,7 +135,37 @@
 
 
 /* ==========================================================================
-   5. MIXED CORNERS — different shapes per corner
+   5. SUPERELLIPSE() — custom curve control
+   Numeric value between -∞ and +∞ for precise shape tuning.
+   ========================================================================== */
+
+/* Slightly rounder than standard (between round and squircle) */
+.soft-round {
+  border-radius: 1.5rem;
+  corner-shape: superellipse(1.5);
+}
+
+/* Gentle concave (between round and scoop) */
+.gentle-scoop {
+  border-radius: 2rem;
+  corner-shape: superellipse(-0.5);
+}
+
+/* Deep concave */
+.deep-scoop {
+  border-radius: 2rem;
+  corner-shape: superellipse(-2);
+}
+
+/* Mixed superellipse values */
+.organic {
+  border-radius: 2rem;
+  corner-shape: superellipse(2) superellipse(-0.5) superellipse(1.5) superellipse(-1);
+}
+
+
+/* ==========================================================================
+   6. MIXED CORNERS — different shapes per corner
    ========================================================================== */
 
 .mixed {
@@ -104,9 +174,24 @@
   border-radius: 2rem;
 }
 
+/* Two-value diagonal pairs */
+.diagonal-pair {
+  corner-shape: notch squircle;  /* TL+BR: notch, TR+BL: squircle */
+  border-radius: 1.5rem;
+}
+
+/* Logical properties for RTL-aware corners */
+.rtl-aware {
+  corner-start-start-shape: squircle;
+  corner-start-end-shape: bevel;
+  corner-end-end-shape: squircle;
+  corner-end-start-shape: bevel;
+  border-radius: 1.5rem;
+}
+
 
 /* ==========================================================================
-   6. TOOLTIP ARROW WITH SCOOP — CSS-only caret using corner-shape
+   7. TOOLTIP ARROW WITH SCOOP — CSS-only caret using corner-shape
    Core: pseudo-element with scoop creates a smooth arrow point
    ========================================================================== */
 
@@ -144,7 +229,8 @@
 
 
 /* ==========================================================================
-   7. ANIMATED CORNER SHAPE — morphing between shapes
+   8. ANIMATED CORNER SHAPE — morphing between shapes
+   Animates via superellipse interpolation (keywords map to superellipse values).
    ========================================================================== */
 
 @keyframes morph {
@@ -158,4 +244,59 @@
 .morphing {
   border-radius: 2rem;
   animation: morph 4s linear infinite;
+}
+
+/* Transition on hover — smooth shape change */
+.hover-morph {
+  border-radius: 2rem;
+  corner-shape: round;
+  transition: corner-shape 0.5s ease-in-out;
+}
+
+.hover-morph:hover {
+  corner-shape: squircle;
+}
+
+/* Animated from square to notch */
+@keyframes corner-pulse {
+  0%, 20% { corner-shape: square; }
+  100%    { corner-shape: notch; }
+}
+
+.pulsing {
+  border-radius: 50%;
+  corner-shape: square;
+  animation: corner-pulse 4s linear infinite alternate;
+}
+
+
+/* ==========================================================================
+   9. OUTLINE + BORDER following corner shape
+   Both border and outline conform to the defined corner shape.
+   ========================================================================== */
+
+.shaped-border {
+  border-radius: 2.5rem;
+  corner-shape: scoop notch;
+  border: 3px solid oklch(0.6 0.2 270);
+  outline: 3px dashed oklch(0.7 0.15 150);
+  outline-offset: 4px;
+  /* Both border and outline follow the scoop/notch shapes */
+}
+
+
+/* ==========================================================================
+   10. @supports FALLBACK
+   Non-supporting browsers get standard border-radius — no breakage.
+   ========================================================================== */
+
+@supports not (corner-shape: scoop) {
+  .scoop,
+  .bevel,
+  .notch,
+  .squircle,
+  .mixed {
+    /* Falls back to standard border-radius — still looks reasonable */
+    border-radius: 1rem;
+  }
 }

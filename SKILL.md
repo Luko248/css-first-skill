@@ -72,6 +72,7 @@ Production-ready CSS examples organized by category. See [`css-demos/INDEX.md`](
 | Masonry layout           | Grid Lanes                      | `css-demos/layout/grid-lanes-masonry.css`              |
 | z-index issues           | `isolation: isolate`            | `css-demos/layout/isolation-stacking.css`              |
 | Fill width with margins  | `stretch`                       | `css-demos/layout/stretch-keyword.css`                 |
+| Column wrapping          | `column-wrap` + `column-height` | `css-demos/layout/column-wrap.css`                     |
 | Responsive layout        | Media queries (range syntax)    | `css-demos/responsive/media-queries.css`               |
 | Feature detection        | `@supports`                     | `css-demos/responsive/supports-rule.css`               |
 | Full-height sections     | Dynamic viewport units          | `css-demos/responsive/viewport-units.css`              |
@@ -104,6 +105,7 @@ Production-ready CSS examples organized by category. See [`css-demos/INDEX.md`](
 | Responsive clipping      | `clip-path: shape()`            | `css-demos/visual/clip-path-shape.css`                 |
 | Gap separators           | `column-rule` / `row-rule`      | `css-demos/visual/gap-decorations.css`                 |
 | Optical text centering   | `text-box-trim`                 | `css-demos/visual/text-box-trim.css`                   |
+| Text justification       | `text-justify`                  | `css-demos/visual/text-justify.css`                    |
 | Focus outlines clipped   | `overflow: clip` + clip-margin  | `css-demos/visual/overflow-clip-margin.css`            |
 | Conditional values       | `if()`                          | `css-demos/functions/css-if-function.css`              |
 | Reusable CSS logic       | `@function`                     | `css-demos/functions/custom-functions.css`             |

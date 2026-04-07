@@ -96,6 +96,38 @@ When suggesting CSS solutions, prefer in this order:
 
 ---
 
+#### ✅ column-wrap & column-height (2025)
+**Status**: 🟣 Experimental (Chrome 145+)
+
+```css
+.wrapped-columns {
+  column-count: 3;
+  column-height: 20rem;
+  column-wrap: balance;  /* wrap | balance | balance-all */
+  gap: 1rem;
+}
+```
+
+**Use instead of**: Horizontal scroll overflow on height-constrained multicol layouts
+
+---
+
+#### ✅ text-justify (2025)
+**Status**: 🟡 Limited Availability (Chrome 145+, Firefox 55+)
+
+```css
+/* Inter-word for Latin scripts */
+.article { text-align: justify; text-justify: inter-word; hyphens: auto; }
+/* Inter-character for CJK or stylistic expansion */
+.heading { text-align: justify; text-justify: inter-character; }
+/* Chrome 145+ also adds percentage letter-spacing/word-spacing */
+.responsive { letter-spacing: 0.5%; word-spacing: 1.2%; }
+```
+
+**Use instead of**: Manual letter-spacing/word-spacing adjustments per language
+
+---
+
 ### Color & Theming (2021-2024)
 
 #### ✅ light-dark() Function (2023-2024)
@@ -453,21 +485,26 @@ button:focus:not(:focus-visible) {
 ---
 
 #### ✅ sibling-index() & sibling-count() (2025)
-**Status**: 🟣 Experimental
+**Status**: 🟡 Limited Availability (Chrome 137+)
 
 ```css
-/* ❌ OLD — repetitive nth-child rules */
+/* ❌ OLD — SCSS @for or repetitive nth-child rules (compile-time) */
 .item:nth-child(1) { animation-delay: 0.1s; }
 .item:nth-child(2) { animation-delay: 0.2s; }
 
-/* ✅ NEW — single declaration */
+/* ✅ NEW — single declaration, adapts at render time */
 .item { animation-delay: calc(sibling-index() * 100ms); }
+
+/* Equal-width flex columns — no fixed count needed */
+.flex-col > * { inline-size: calc(100% / sibling-count()); }
 
 /* Rainbow color distribution */
 .item { background: oklch(0.7 0.15 calc(360deg / sibling-count() * sibling-index())); }
 ```
 
-**Use instead of**: Inline `--i` variables, repetitive `:nth-child()` rules
+Both return `<integer>` (usable in `calc()`), unlike `counter()` which returns `<string>`.
+
+**Use instead of**: SCSS `@for` loops, inline `--i` variables, repetitive `:nth-child()` rules
 
 ---
 
@@ -584,9 +621,44 @@ MDN: [scrollbar-gutter](https://developer.mozilla.org/en-US/docs/Web/CSS/scrollb
 .bevel    { border-radius: 1rem; corner-shape: bevel; }
 .scoop    { border-radius: 2rem; corner-shape: scoop; }
 .notch    { border-radius: 1rem; corner-shape: notch; }
+/* Custom curve — superellipse(n) where n: -∞ to +∞ */
+.custom   { border-radius: 2rem; corner-shape: superellipse(1.5); }
+/* Per-corner — shorthand or logical longhands */
+.mixed    { border-radius: 2rem; corner-shape: squircle bevel scoop round; }
+/* Animatable via superellipse interpolation */
+.hover    { transition: corner-shape 0.5s; }
 ```
 
+**Critical**: `corner-shape` has NO EFFECT without an active `border-radius`.
+
+**Longhands**: `corner-top-left-shape` / logical: `corner-start-start-shape`
+
+**Properties that follow shape**: border, outline, box-shadow, backdrop-filter, overflow
+
 **Use instead of**: SVG/clip-path workarounds for non-round corners
+
+---
+
+#### ✅ Customizable `<select>` (2025)
+**Status**: 🟣 Experimental (Chrome 135+)
+
+```css
+/* Opt in — both select and picker */
+select, ::picker(select) { appearance: base-select; }
+
+/* Pseudo-elements: ::picker(select), ::picker-icon, ::checkmark */
+select:open::picker-icon { rotate: 180deg; }
+option { display: flex; gap: 0.5rem; }
+option::checkmark { order: 1; margin-inline-start: auto; }
+
+/* HTML: rich content in options, <selectedcontent> for cloned preview */
+/* <select>
+     <button><selectedcontent></selectedcontent></button>
+     <option><img src="flag.svg" alt=""> Label</option>
+   </select> */
+```
+
+**Use instead of**: JS-heavy custom dropdown components (Headless UI, Radix, Downshift)
 
 ---
 

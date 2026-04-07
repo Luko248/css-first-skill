@@ -54,6 +54,7 @@ data["<feature-id>"].status.support
 | `isolation` | `isolation` | `css.properties.isolation` |
 | `stretch` keyword | `stretch-sizing` | `css.properties.width.stretch` |
 | Dynamic viewport units | `viewport-units` | `css.types.length.svh` |
+| `column-wrap` | `column-wrap` | `css.properties.column-wrap` |
 
 #### Animation & Transitions
 | CSS Feature | web-features ID | compat_features key |
@@ -93,6 +94,7 @@ data["<feature-id>"].status.support
 | `text-box-trim` | `text-box-trim` | `css.properties.text-box-trim` |
 | `overflow: clip` | `overflow-clip` | `css.properties.overflow.clip` |
 | `overflow-clip-margin` | `overflow-clip-margin` | `css.properties.overflow-clip-margin` |
+| `text-justify` | `text-justify` | `css.properties.text-justify` |
 | `:user-valid` | `user-valid-pseudo` | `css.selectors.user-valid` |
 
 #### Functions

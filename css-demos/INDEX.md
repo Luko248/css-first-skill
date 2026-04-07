@@ -60,6 +60,14 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - Task: Fill containing block while respecting margins
 - Features: `inline-size: stretch`, margin-safe full-width, form inputs, sticky bars, comparison vs `100%`, `@supports` fallback
 
+### [column-wrap.css](layout/column-wrap.css)
+**Multi-Column Wrapping — column-wrap & column-height**
+- Baseline: 🟣 Experimental (Chrome 145+)
+- Spec: CSS Multi-column Layout Module Level 2
+- Reference: [Multi-column wrapping (Chrome Blog)](https://developer.chrome.com/blog/multicol-wrapping)
+- Task: Make multi-column layouts wrap into rows instead of overflowing inline
+- Features: `column-wrap` (`wrap`/`balance`/`balance-all`), `column-height`, full-viewport column carousel, magazine-style article layout, `@supports` fallback
+
 ---
 
 ## Responsive
@@ -299,9 +307,11 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 ### [corner-shape.css](visual/corner-shape.css)
 **CSS corner-shape Property**
 - Baseline: 🟣 Experimental (Chrome 139+)
-- MDN: [corner-shape](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/corner-shape)
+- Spec: CSS Borders and Box Decorations Module Level 4
+- MDN: [corner-shape](https://developer.mozilla.org/en-US/docs/Web/CSS/corner-shape)
+- Reference: [Implementing corner-shape (Chrome Blog)](https://developer.chrome.com/blog/implementing-corner-shape)
 - Task: Create modern border shapes — bevels, scoops, squircles, notches, tooltip arrows
-- Features: `corner-shape` (round, squircle, bevel, scoop, notch, superellipse), tooltip arrow with scoop, animated morphing
+- Features: `corner-shape` shorthand (round, squircle, bevel, scoop, notch, square), `superellipse()` function with custom values, physical longhands (`corner-top-left-shape` etc.), logical longhands (`corner-start-start-shape` etc.), side shorthands, mixed corners (per-corner shapes), backdrop-filter/outline/box-shadow follow shape, tooltip arrow with scoop, animated morphing + transition, `@supports` fallback
 
 ### [text-box-trim.css](visual/text-box-trim.css)
 **text-box-trim & text-box-edge — Optical Text Alignment**
@@ -310,6 +320,14 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - Reference: [CSS text-box-trim (Chrome Blog)](https://developer.chrome.com/blog/css-text-box-trim)
 - Task: Remove extra whitespace above/below text for pixel-perfect vertical centering
 - Features: `text-box-trim`, `text-box-edge`, `text-box` shorthand, cap/alphabetic/ex metrics, buttons, badges, headings, `@supports` fallback
+
+### [text-justify.css](visual/text-justify.css)
+**text-justify — Justification Method Control**
+- Baseline: 🟡 Limited Availability (Chrome 145+, Firefox 55+)
+- MDN: [text-justify](https://developer.mozilla.org/en-US/docs/Web/CSS/text-justify)
+- Spec: CSS Text Module Level 3
+- Task: Control how text-align: justify distributes space — between words or characters
+- Features: `inter-word` (Latin scripts), `inter-character` (CJK / stylistic), `auto` (browser decides by language), `none` (disable), `letter-spacing`/`word-spacing` percentage values (Chrome 145+), practical patterns (article body + hyphens, narrow column override, expanded heading)
 
 ### [overflow-clip-margin.css](visual/overflow-clip-margin.css)
 **overflow: clip + overflow-clip-margin**
@@ -346,10 +364,11 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [sibling-functions.css](functions/sibling-functions.css)
 **sibling-index() & sibling-count() Functions**
-- Baseline: 🟣 Experimental (Chrome behind flag)
+- Baseline: 🟡 Limited Availability (Chrome 137+)
 - MDN: [sibling-index()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/sibling-index), [sibling-count()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/sibling-count)
-- Task: Dynamically style elements based on their position among siblings
-- Features: Staggered animations (one-line), reverse stagger, rainbow colors, progressive sizing, circular layout without `--i`, dynamic opacity
+- Spec: CSS Values and Units Module Level 5
+- Task: Dynamically style elements based on their position among siblings — like SCSS `@for` loops but resolved at render time
+- Features: Staggered animations (one-line), reverse stagger, rainbow colors, progressive sizing, circular layout without `--i`, dynamic opacity, equal-width flex columns, combined width+color distribution, SCSS `@for` vs `sibling-index()` comparison
 
 ### [trigonometric-functions.css](functions/trigonometric-functions.css)
 **CSS Trigonometric Functions — sin(), cos(), tan(), atan2()**
@@ -402,8 +421,9 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 **Customizable Select Element**
 - Baseline: 🟣 Experimental (Chrome 135+)
 - MDN: [Customizable Select](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select)
+- Reference: [A customizable select (Chrome Blog)](https://developer.chrome.com/blog/a-customizable-select)
 - Task: Style native `<select>` with full visual control — picker, options, icons, animations
-- Features: `appearance: base-select`, `::picker(select)`, `::picker-icon`, `::checkmark`, `<selectedcontent>`, `:open`, entry/exit animations, `@supports` fallback
+- Features: `appearance: base-select` opt-in, `::picker(select)` popover in top-layer, `::picker-icon` arrow rotation, `::checkmark` indicator, `<selectedcontent>` cloned preview with differential styling, `:open` pseudo-class, rich HTML in options (SVG, images, spans), anchor positioning, `<optgroup>` + `<legend>`, listbox mode (`<select multiple>`/`<select size>`, Chrome 145+), entry/exit animations (`@starting-style`), zebra striping, `@supports` fallback, country picker example
 
 ---
 

@@ -3,11 +3,14 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/sibling-index
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/sibling-count
- * Baseline: 🟣 Experimental (Chrome behind flag)
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome 137+
+ * Spec: CSS Values and Units Module Level 5
  *
  * Task: Dynamically style elements based on their position among siblings
  * Why: Replaces repetitive :nth-child() rules and inline --i variables
- *      with a single declaration — cleaner staggered animations, dynamic sizing
+ *      with a single declaration — like SCSS @for loops but resolved at
+ *      render time, adapting automatically when items are added/removed
  */
 
 
@@ -17,7 +20,16 @@
    sibling-index() → <integer> starting at 1 (1st child = 1, 2nd = 2, ...)
    sibling-count() → <integer> total siblings including self
 
-   Both usable in calc(), clamp(), and any math function.
+   Both return <integer> (usable in calc(), clamp(), and any math function).
+   This is different from counter() which returns <string> (for generated content).
+
+   SCSS analogy:
+     @for $i from 1 through $n { .item:nth-child(#{$i}) { ... } }
+   becomes:
+     .item { property: calc(sibling-index() * value); }
+
+   Key difference: SCSS loops are compile-time — you must know $n.
+   sibling-index()/sibling-count() are render-time — they adapt to any DOM.
    ========================================================================== */
 
 
@@ -160,17 +172,62 @@
 
 
 /* ==========================================================================
-   9. COMPARISON: OLD vs NEW
+   9. EQUAL-WIDTH FLEX COLUMNS — adapts to any number of items
+   MDN reference example. No media queries, no fixed column count.
+   ========================================================================== */
 
-   ❌ Old pattern (nth-child or inline styles):
+.equal-columns {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.equal-columns > * {
+  inline-size: calc(100% / sibling-count());
+  text-align: center;
+}
+
+/* 3 items → 33.3% each, 5 items → 20% each, 7 items → 14.3% each
+   Add/remove DOM children and the layout auto-rebalances. */
+
+
+/* ==========================================================================
+   10. COMBINED — progressive width + distributed color
+   Each item gets wider AND shifts hue based on position.
+   ========================================================================== */
+
+.progress-rainbow > * {
+  inline-size: calc(sibling-index() * 30px);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  background-color: hsl(
+    calc(360deg / sibling-count() * sibling-index())
+    50%
+    50%
+  );
+}
+
+
+/* ==========================================================================
+   11. COMPARISON: SCSS @for vs sibling-index()
+
+   ❌ SCSS — compile-time, must know item count:
+   @for $i from 1 through 6 {
+     .item:nth-child(#{$i}) { animation-delay: #{$i * 0.1}s; }
+   }
+   // Generates 6 rules. Add a 7th item? Recompile.
+
+   ❌ Inline styles — clutters HTML:
    <li style="--i: 0">...</li>
    <li style="--i: 1">...</li>
    li { animation-delay: calc(var(--i) * 100ms); }
 
-   ✅ New pattern (sibling-index):
+   ✅ sibling-index() — render-time, adapts to any DOM:
    <li>...</li>
    <li>...</li>
    li { animation-delay: calc(sibling-index() * 100ms); }
 
-   No inline styles. No nth-child rules. Works with any number of items.
+   One rule. No inline styles. No compilation. Works with any number of items.
    ========================================================================== */
