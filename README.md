@@ -37,7 +37,7 @@ This skill gives AI agents deep knowledge of modern CSS so they provide CSS-only
 | Sticky detection     | Scroll state queries            | `css-demos/container/scroll-state-queries.css`    |
 | Tooltip arrow flip   | Anchored container queries      | `css-demos/container/anchored-queries.css`        |
 | Dark mode            | `light-dark()`                  | `css-demos/theming/light-dark-function.css`       |
-| Page transitions     | View Transitions                | `css-demos/animation/view-transitions.css`        |
+| Page transitions     | View Transitions (+ element-scoped) | `css-demos/animation/view-transitions.css`   |
 | Scroll effects       | Scroll-driven animations        | `css-demos/animation/scroll-driven.css`           |
 | Scroll reveals       | Scroll-triggered animations     | `css-demos/animation/scroll-triggered.css`        |
 | Entry/exit animation | `@starting-style`               | `css-demos/animation/starting-style.css`          |

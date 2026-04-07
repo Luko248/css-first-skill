@@ -59,7 +59,9 @@ data["<feature-id>"].status.support
 | CSS Feature | web-features ID | compat_features key |
 |---|---|---|
 | View Transitions | `view-transitions` | `css.properties.view-transition-name` |
+| View Transition class | `view-transition-class` | `css.properties.view-transition-class` |
 | Nested view transition groups | `view-transition-group` | `css.properties.view-transition-group` |
+| View Transition scope | `view-transition-scope` | `css.properties.view-transition-scope` |
 | Scroll-driven Animations | `scroll-driven-animations` | `css.properties.animation-timeline` |
 | `@starting-style` | `starting-style` | `css.at-rules.starting-style` |
 | `interpolate-size` | `interpolate-size` | `css.properties.interpolate-size` |

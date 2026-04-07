@@ -152,25 +152,43 @@ When suggesting CSS solutions, prefer in this order:
 
 ### Animations & Transitions (2023-2024)
 
-#### ✅ View Transitions API (2023-2024)
-**Status**: 🔵 Newly Available
+#### ✅ View Transitions API (2023-2026)
+**Status**: 🔵 Newly Available (SPA: Chrome 111+, Firefox 132+, Safari 18+ / MPA: Chrome 126+, Safari 18.2+ / Element-scoped: Chrome 147+)
 
 ```css
-@view-transition {
-  navigation: auto;
+/* CSS-only MPA transitions — no JavaScript needed */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+    types: slide;
+  }
 }
 
-.card {
-  view-transition-name: card-transition;
-}
+/* Named transitions — hero morphing between pages */
+.hero-image { view-transition-name: hero; }
 
-::view-transition-old(card-transition),
-::view-transition-new(card-transition) {
-  animation-duration: 0.3s;
-}
+/* Class-based shared styling — dot notation in selectors */
+.card { view-transition-name: card-1; view-transition-class: card; }
+::view-transition-group(*.card) { animation-duration: 0.3s; }
+
+/* match-element — auto-pair by DOM identity (SPA only) */
+.list-item { view-transition-name: match-element; }
+
+/* Nested groups — children clip + inherit 3D transforms from parent */
+.container { view-transition-name: container; view-transition-group: contain; }
+.container .item { view-transition-name: item-1; view-transition-group: nearest; }
+
+/* Element-scoped (Chrome 147+) — concurrent transitions, name reuse */
+/* JS: element.startViewTransition({ callback: () => mutateDOM() }) */
 ```
 
-**Use instead of**: JavaScript animation libraries for page transitions
+**Key properties**: `view-transition-name`, `view-transition-class`, `view-transition-group` (`contain`/`nearest`/`<name>`), `view-transition-scope`
+
+**Key pseudo-elements**: `::view-transition`, `::view-transition-group()`, `::view-transition-image-pair()`, `::view-transition-old()`, `::view-transition-new()`, `::view-transition-group-children()`
+
+**Use instead of**: JavaScript animation libraries (Barba.js, Swup, GSAP) for page transitions
+
+**Reference**: [CSS View Transitions (Lukáš Chylík)](https://lukaschylik.dev/blog/articles/css-view-transitions/)
 
 ---
 

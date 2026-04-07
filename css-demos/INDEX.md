@@ -123,11 +123,12 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 ## Animation
 
 ### [view-transitions.css](animation/view-transitions.css)
-**Smooth Animations with View Transitions**
-- Baseline: 🔵 Newly Available (90%)
+**View Transitions — From CSS-Only MPA to Element-Scoped Transitions**
+- Baseline: 🔵 Newly Available (90%) — SPA: Chrome 111+, Firefox 132+, Safari 18+ / MPA: Chrome 126+, Safari 18.2+ / Element-scoped: Chrome 147+
 - MDN: [View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API)
-- Task: Add smooth page transitions
-- Features: View transitions, named transitions, scoped view transitions (subtree transitions, concurrent animations), nested view transition groups (`view-transition-group: contain/nearest`, `::view-transition-group-children()`, 3D clipping)
+- Task: Add smooth transitions between page states — MPA, SPA, and scoped
+- Features: CSS-only MPA transitions (`@view-transition { navigation: auto }`), transition `types` + `:active-view-transition-type()`, pseudo-element tree (`::view-transition`, `::view-transition-group`, `::view-transition-image-pair`, `::view-transition-old/new`), selector syntax (`*.class`, `name.class`, `*`), `view-transition-name: match-element` (SPA auto-pairing), `view-transition-class` (dot notation), nested groups (`view-transition-group: contain/nearest/<name>`, `::view-transition-group-children()`), element-scoped transitions (Chrome 147+ — concurrent animations, name reuse across scopes, `view-transition-scope`), custom old/new animations, `object-fit` on snapshots, `mix-blend-mode: plus-lighter`, performance/CWV notes, accessibility (`prefers-reduced-motion` wrapping)
+- Reference: [CSS View Transitions (Lukáš Chylík)](https://lukaschylik.dev/blog/articles/css-view-transitions/)
 
 ### [scroll-driven.css](animation/scroll-driven.css)
 **Scroll-Driven Animations**

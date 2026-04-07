@@ -79,7 +79,7 @@ Production-ready CSS examples organized by category. See [`css-demos/INDEX.md`](
 | Component theming        | Container style queries         | `css-demos/container/style-queries.css`                |
 | Sticky detection         | Scroll state queries            | `css-demos/container/scroll-state-queries.css`         |
 | Tooltip arrow flip       | Anchored container queries      | `css-demos/container/anchored-queries.css`             |
-| Page transitions         | View Transitions (+ nested)     | `css-demos/animation/view-transitions.css`             |
+| Page transitions         | View Transitions (+ element-scoped) | `css-demos/animation/view-transitions.css`         |
 | Scroll effects           | Scroll-driven animations        | `css-demos/animation/scroll-driven.css`                |
 | Scroll reveals           | Scroll-triggered animations     | `css-demos/animation/scroll-triggered.css`             |
 | Entry/exit animation     | `@starting-style`               | `css-demos/animation/starting-style.css`               |
