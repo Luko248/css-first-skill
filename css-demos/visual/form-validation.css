@@ -5,8 +5,8 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/:user-invalid
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
  *
- * Baseline: 🔵 Newly Available
- * Support: 90% (Chrome 119+, Safari 16.5+, Firefox 88+)
+ * Baseline: 🟢 Widely Available (since 2026)
+ * Support: Chrome 119+, Firefox 88+, Safari 16.5+
  *
  * Task: Style form with validation feedback
  * Why: Uses :user-valid and :user-invalid pseudo-classes for validation feedback

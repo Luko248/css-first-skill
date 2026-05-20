@@ -3,7 +3,8 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path
  * Reference: https://developer.chrome.com/blog/css-shape
- * Baseline: 🟣 Experimental (Chrome 135+, Safari 18.4+)
+ * Baseline: 🔵 Newly Available (shape() — since Feb 2026)
+ * Support: Chrome 135+, Firefox 148+, Safari 18.4+
  *
  * Task: Create responsive clip shapes with curves, animate/morph them on scroll
  * Why: shape() accepts CSS units + custom properties — unlike path() which is

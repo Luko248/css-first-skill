@@ -2,13 +2,13 @@
  * CSS Subgrid
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid
- * Baseline: 🔵 Newly Available
- * Support: 92%
+ * Baseline: 🟢 Widely Available (since 2026)
+ * Support: Chrome 117+, Firefox 71+, Safari 16+
  *
  * Task: Align nested grid items to the parent grid tracks
  * Why: Subgrid lets child grids inherit parent track sizing,
  *      so content in sibling cards aligns across rows
- * Last verified: 2026-02
+ * Last verified: 2026-05
  */
 
 

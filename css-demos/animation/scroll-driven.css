@@ -5,13 +5,13 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/view
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/animation-range
  *
- * Baseline: 🔵 Newly Available
- * Support: 88% (Chrome 115+, Safari 17.5+)
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome 115+, Safari 26+ — not yet in Firefox
  *
  * Task: Create animation that responds to scroll
  * Why: Scroll-driven animations with animation-timeline create performant,
  *      declarative scroll effects without JavaScript or scroll listeners.
- * Last verified: 2026-02
+ * Last verified: 2026-05
  */
 
 /* Fade in elements as they enter viewport */

@@ -2,8 +2,8 @@
  * overscroll-behavior
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior
- * Baseline: 🟢 Widely Available (since Sept 2022)
- * Support: 97%
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome & Firefox; logical longhands not supported in Safari
  *
  * Task: Prevent scroll chaining, pull-to-refresh, and bounce effects
  * Why: Native solution replaces JS scroll-locking hacks with a single declaration

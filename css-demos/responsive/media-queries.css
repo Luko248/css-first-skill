@@ -3,13 +3,13 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries
- * Baseline: 🔵 Newly Available
- * Support: 93%
+ * Baseline: 🟢 Widely Available (range syntax — since 2025)
+ * Support: Chrome 104+, Firefox 102+, Safari 16.4+
  *
  * Task: Write modern, readable media queries with range syntax
  * Why: Range syntax (width >= 900px) replaces verbose min-width/max-width;
  *      logical properties work with writing modes
- * Last verified: 2026-02
+ * Last verified: 2026-05
  */
 
 

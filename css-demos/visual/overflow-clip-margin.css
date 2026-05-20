@@ -3,7 +3,7 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-clip-margin
- * Baseline: overflow: clip 🔵 Newly Available (92%)
+ * Baseline: overflow: clip 🟢 Widely Available (since 2025)
  *           overflow-clip-margin 🟡 Limited Availability
  *
  * Task: Clip overflow while keeping focus outlines, shadows, and decorations visible

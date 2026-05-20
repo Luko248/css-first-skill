@@ -3,12 +3,13 @@
  *
  * Reference: https://web.dev/blog/viewport-units
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/length#relative_length_units_based_on_viewport
- * Baseline: 🔵 Newly Available (Chrome 108+, Firefox 101+, Safari 15.4+)
- * Support: 93%
+ * Baseline: 🟢 Widely Available (since 2025)
+ * Support: Chrome 108+, Firefox 101+, Safari 15.4+
  *
  * Task: Size elements relative to the viewport with mobile-safe units
  * Why: Classic vh/vw ignore mobile browser chrome (address bar, toolbar);
  *      sv*/lv*/dv* units account for dynamic UI and writing direction
+ * Last verified: 2026-05
  */
 
 

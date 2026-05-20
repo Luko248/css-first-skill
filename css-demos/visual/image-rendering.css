@@ -3,7 +3,8 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering
  * Reference: https://developer.chrome.com/blog/chrome-149-beta
- * Support: crisp-edges contrast/edge-preserving scaling — Chrome 149+
+ * Baseline: crisp-edges 🔵 Newly Available (since May 2026)
+ * Support: Chrome 148+, Firefox 65+, Safari 7+
  *
  * Task: Scale small raster images up without blurring them
  * Why: the default smooth (bilinear) algorithm blurs pixel art, sprites,

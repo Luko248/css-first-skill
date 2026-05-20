@@ -3,12 +3,13 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/contrast-color
  * Spec: https://drafts.csswg.org/css-color-5/#contrast-color
- * Baseline: 🟡 Limited Availability
+ * Baseline: 🔵 Newly Available (since April 2026)
+ * Support: Chrome 147+, Firefox 146+, Safari 26+
  *
  * Task: Automatically pick black or white text for maximum contrast
  * Why: contrast-color() returns whichever of black/white has the
  *      greatest contrast with the input, ensuring WCAG AA readability
- * Last verified: 2026-02
+ * Last verified: 2026-05
  */
 
 

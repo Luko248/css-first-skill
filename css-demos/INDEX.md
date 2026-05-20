@@ -20,7 +20,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [subgrid.css](layout/subgrid.css)
 **CSS Subgrid**
-- Baseline: 🔵 Newly Available (92%)
+- Baseline: 🟢 Widely Available (since 2026)
 - MDN: [Subgrid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid)
 - Task: Align nested grid items to parent grid tracks
 - Features: `grid-template-rows: subgrid`, `grid-template-columns: subgrid`, named lines
@@ -74,7 +74,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [media-queries.css](responsive/media-queries.css)
 **Modern Media Queries — Range Syntax + Logical Queries**
-- Baseline: 🔵 Newly Available (93%)
+- Baseline: 🟢 Widely Available (range syntax — since 2025)
 - MDN: [@media](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media)
 - Task: Write modern, readable media queries with range syntax
 - Features: `(width >= 900px)`, `(600px <= width <= 899px)`, preference queries, interaction queries
@@ -88,7 +88,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [viewport-units.css](responsive/viewport-units.css)
 **Modern Viewport Units — Small, Large, Dynamic**
-- Baseline: 🔵 Newly Available (93%)
+- Baseline: 🟢 Widely Available (since 2025)
 - Reference: [Viewport Units (web.dev)](https://web.dev/blog/viewport-units)
 - MDN: [Viewport-relative lengths](https://developer.mozilla.org/en-US/docs/Web/CSS/length#relative_length_units_based_on_viewport)
 - Task: Size elements relative to the viewport with mobile-safe units
@@ -100,7 +100,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [size-queries.css](container/size-queries.css)
 **Container Size Queries**
-- Baseline: 🔵 Newly Available (90%)
+- Baseline: 🟢 Widely Available (since 2025)
 - MDN: [Container Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)
 - Task: Make components responsive to their container, not the viewport
 - Features: `container-type: inline-size`, named containers, container units (cqi, cqb, cqw, cqh, cqmin, cqmax)
@@ -148,7 +148,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [scroll-driven.css](animation/scroll-driven.css)
 **Scroll-Driven Animations**
-- Baseline: 🔵 Newly Available (88%)
+- Baseline: 🟡 Limited Availability (Chrome & Safari; not yet in Firefox)
 - MDN: [Scroll Timeline](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/scroll), [View Timeline](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timeline/view)
 - Task: Create animation that responds to scroll
 - Features: Scroll timeline, view timeline, animation-range
@@ -231,7 +231,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [overscroll-behavior.css](interaction/overscroll-behavior.css)
 **overscroll-behavior**
-- Baseline: 🟢 Widely Available (97%)
+- Baseline: 🟡 Limited Availability (logical longhands not in Safari)
 - MDN: [overscroll-behavior](https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior)
 - Task: Prevent scroll chaining, pull-to-refresh, and bounce effects
 - Features: `overscroll-behavior`, `overscroll-behavior-block`, `overscroll-behavior-inline`, contain/none values, modal scroll locking, carousel containment
@@ -263,14 +263,14 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [form-validation.css](visual/form-validation.css)
 **Modern Form with CSS-Only Validation**
-- Baseline: 🔵 Newly Available (90%)
+- Baseline: 🟢 Widely Available (since 2026)
 - MDN: [:user-valid](https://developer.mozilla.org/en-US/docs/Web/CSS/:user-valid), [:user-invalid](https://developer.mozilla.org/en-US/docs/Web/CSS/:user-invalid)
 - Task: Style form with validation feedback
 - Features: :user-valid, :user-invalid, :focus-visible, :has() form validation
 
 ### [color-mix.css](visual/color-mix.css)
 **color-mix() Function**
-- Baseline: 🔵 Newly Available (91%)
+- Baseline: 🟢 Widely Available (since 2025)
 - MDN: [color-mix()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color-mix)
 - Task: Create color variations, tints, shades, and transparency from a single base
 - Features: `color-mix()` in oklch/srgb, tints, shades, transparency, interactive states
@@ -300,7 +300,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [clip-path-shape.css](visual/clip-path-shape.css)
 **clip-path: shape() — Responsive Clipping & Scroll Morphing**
-- Baseline: 🟣 Experimental (Chrome 135+, Safari 18.4+)
+- Baseline: 🔵 Newly Available (shape() — since Feb 2026)
 - MDN: [clip-path](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path)
 - Reference: [CSS shape() (Chrome Blog)](https://developer.chrome.com/blog/css-shape)
 - Task: Create responsive clip shapes with curves, animate/morph them on scroll
@@ -340,7 +340,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [overflow-clip-margin.css](visual/overflow-clip-margin.css)
 **overflow: clip + overflow-clip-margin**
-- Baseline: overflow: clip 🔵 Newly Available (92%); overflow-clip-margin 🟡 Limited Availability
+- Baseline: overflow: clip 🟢 Widely Available (since 2025); overflow-clip-margin 🟡 Limited Availability
 - MDN: [overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow), [overflow-clip-margin](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-clip-margin)
 - Task: Clip overflow while keeping focus outlines, shadows, and decorations visible
 - Features: `overflow: clip`, `overflow-clip-margin`, single-axis clipping, focus ring preservation, badge/ribbon overflow, `@supports` fallback
@@ -355,7 +355,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [text-decoration-skip-ink.css](visual/text-decoration-skip-ink.css)
 **text-decoration-skip-ink: all**
-- Support: `all` keyword — Chrome 148+ (`auto`/`none` widely available)
+- Baseline: `all` keyword 🔵 Newly Available (since May 2026)
 - MDN: [text-decoration-skip-ink](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-skip-ink)
 - Reference: [Chrome 148 Beta (Chrome Blog)](https://developer.chrome.com/blog/chrome-148-beta)
 - Task: Control how underlines skip over glyph descenders, including CJK
@@ -363,7 +363,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [image-rendering.css](visual/image-rendering.css)
 **image-rendering — Crisp Scaling for Pixel Art**
-- Support: `crisp-edges` contrast/edge-preserving scaling — Chrome 149+
+- Baseline: `crisp-edges` 🔵 Newly Available (since May 2026)
 - MDN: [image-rendering](https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering)
 - Reference: [Chrome 149 Beta (Chrome Blog)](https://developer.chrome.com/blog/chrome-149-beta)
 - Task: Scale small raster images up without blurring them
@@ -420,7 +420,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [contrast-color.css](functions/contrast-color.css)
 **contrast-color() Function**
-- Baseline: 🟡 Limited Availability
+- Baseline: 🔵 Newly Available (since April 2026)
 - MDN: [contrast-color()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/contrast-color)
 - Task: Automatically pick black or white text for maximum contrast
 - Features: WCAG AA auto contrast, dynamic buttons, color swatches, tag clouds, `@supports` fallback
