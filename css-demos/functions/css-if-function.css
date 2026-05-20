@@ -7,7 +7,7 @@
  * Task: Apply conditional values inline without at-rules
  * Why: if() enables style, media, and supports conditions directly
  *      in property values — no need for separate @media or @container blocks
- * Last verified: 2026-02
+ * Last verified: 2026-05
  */
 
 
@@ -167,5 +167,35 @@
     style(--scheme: fire): "🔥 ";
     style(--scheme: forest): "🌲 ";
     else: "";
+  );
+}
+
+
+/* ==========================================================================
+   9. if() + revert-rule — DROP A DECLARATION WHEN THE CONDITION FAILS
+   revert-rule rolls the cascade back one rule, so an `else: revert-rule`
+   branch REMOVES this declaration instead of forcing an arbitrary fallback
+   value — the cascade then resolves it from earlier rules.
+   See specificity/revert-rule.css for the keyword itself.
+   ========================================================================== */
+
+/* Earlier rule supplies the real fallback */
+.panel {
+  display: block;
+}
+
+/* Opt into grid; otherwise behave as if this rule were not present */
+.panel {
+  display: if(
+    style(--layout: fancy): grid;
+    else: revert-rule;
+  );
+}
+
+/* Apply an accent only on the brand theme — no neutral default to invent */
+.cta {
+  background-color: if(
+    style(--theme: brand): light-dark(#0066cc, #3399ff);
+    else: revert-rule;
   );
 }

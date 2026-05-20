@@ -378,7 +378,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - Baseline: 🟣 Experimental
 - MDN: [if()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/if)
 - Task: Apply conditional values inline without at-rules
-- Features: `if(style():)`, `if(media():)`, `if(supports():)`, nested `if()`, logical operators, use in `calc()` and shorthands
+- Features: `if(style():)`, `if(media():)`, `if(supports():)`, nested `if()`, logical operators, use in `calc()` and shorthands, `else: revert-rule` to drop a declaration when no condition matches
 
 ### [custom-functions.css](functions/custom-functions.css)
 **CSS Custom Functions (@function) and Mixins (@mixin)**
