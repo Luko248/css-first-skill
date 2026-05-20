@@ -2,12 +2,14 @@
  * Gap Decorations — column-rule & row-rule
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule
- * Reference: https://developer.chrome.com/blog/gap-decorations
+ * Reference: https://developer.chrome.com/blog/gap-decorations-stable
  * Baseline: column-rule (multicol) 🟢 Widely Available (since 2017)
- *           gap decorations (grid/flex) 🟣 Experimental (Chrome 139+)
+ * Support: gap decorations (grid/flex) — Chrome 139+
  *
  * Task: Draw separator lines between grid columns, flex items, or multicol columns
- * Why: Pure CSS decorative lines with no layout impact — replaces border hacks and pseudo-elements
+ * Why: Pure CSS decorative lines with no layout impact — replaces border hacks,
+ *      pseudo-elements, and extra divider DOM nodes
+ * Last verified: 2026-05
  */
 
 
@@ -35,10 +37,9 @@
 
 
 /* ==========================================================================
-   2. GRID GAP DECORATIONS — Experimental
-   Extends column-rule to grid, adds row-rule.
-   Decorations are purely visual — no layout impact.
-   Reference: https://developer.chrome.com/blog/gap-decorations
+   2. GRID GAP DECORATIONS — Chrome 139+
+   Extends column-rule to grid and adds row-rule.
+   Decorations are purely visual — they never affect layout or item size.
    ========================================================================== */
 
 /* Vertical separators between grid columns */
@@ -68,8 +69,8 @@
 
 
 /* ==========================================================================
-   3. FLEX GAP DECORATIONS — Experimental
-   Works the same way on flex containers.
+   3. FLEX GAP DECORATIONS — Chrome 139+
+   Works the same way on flex containers, including wrapped flex lines.
    ========================================================================== */
 
 .flex-with-dividers {
@@ -83,13 +84,13 @@
   flex-wrap: wrap;
   gap: 1rem;
   column-rule: 1px solid oklch(0.85 0 0);
-  row-rule: 1px solid oklch(0.8 0 0);
+  row-rule: 1px solid oklch(0.8 0 0);   /* between wrapped lines */
 }
 
 
 /* ==========================================================================
    4. REPEAT() PATTERN — Varied Rule Widths
-   Like grid track repeat(), allows patterned decoration widths.
+   Like grid track repeat(), allows patterned decoration widths per gap.
    ========================================================================== */
 
 /* Sudoku-style grid: thin lines + thick every 3rd */
@@ -107,10 +108,20 @@
   row-rule-color: oklch(0.3 0 0);
 }
 
+/* Alternating colors across columns */
+.alternating {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  column-rule-width: 2px;
+  column-rule-style: solid;
+  column-rule-color: repeat(2, oklch(0.7 0.15 20) oklch(0.7 0.15 250));
+}
+
 
 /* ==========================================================================
    5. STYLED SEPARATORS — Different Rule Styles
-   column-rule-style accepts all border-style values.
+   column-rule-style / row-rule-style accept all border-style values.
    ========================================================================== */
 
 /* Dotted separator */
@@ -144,9 +155,11 @@
 
 
 /* ==========================================================================
-   6. RULE OFFSET — Shorten Decorations
-   column-rule-offset / row-rule-offset adjusts line length.
-   Negative values shorten from each end.
+   6. RULE INSET — Shorten Decorations Within the Gap
+   column-rule-inset / row-rule-inset pull the rule away from its endpoints.
+   Accepts a <length>, <percentage>, or the `overlap-join` keyword.
+   Finer control: column-rule-inset-cap (outer endpoints) and
+   column-rule-inset-junction (where rules cross) are available as longhands.
    ========================================================================== */
 
 .inset-dividers {
@@ -154,13 +167,74 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   column-rule: 1px solid oklch(0.8 0 0);
-  column-rule-offset: -1rem; /* shortens line by 1rem on each end */
+  column-rule-inset: 1rem;       /* rule stops 1rem short of each end */
+}
+
+/* `overlap-join` lets crossing rules meet cleanly at intersections */
+.inset-joined {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  column-rule: 1px solid oklch(0.8 0 0);
+  row-rule: 1px solid oklch(0.8 0 0);
+  column-rule-inset: overlap-join;
+  row-rule-inset: overlap-join;
 }
 
 
 /* ==========================================================================
-   7. NAVIGATION / TOOLBAR PATTERN
-   Vertical dividers between inline items.
+   7. RULE BREAK — Behavior Where Column & Row Rules Cross
+   column-rule-break / row-rule-break: normal | none | intersection
+     normal       — default per container type
+     none         — rules run continuously straight through crossings
+     intersection — rules are interrupted at every crossing
+   ========================================================================== */
+
+/* Continuous grid lines — rules pass through intersections uninterrupted */
+.grid-continuous {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  column-rule: 1px solid oklch(0.8 0 0);
+  row-rule: 1px solid oklch(0.8 0 0);
+  column-rule-break: none;
+  row-rule-break: none;
+}
+
+/* Ledger look — rules break at each crossing for a segmented grid */
+.grid-segmented {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  column-rule: 1px solid oklch(0.8 0 0);
+  row-rule: 1px solid oklch(0.8 0 0);
+  column-rule-break: intersection;
+  row-rule-break: intersection;
+}
+
+
+/* ==========================================================================
+   8. RULE VISIBILITY — Which Gaps Get a Rule
+   column-rule-visibility-items / row-rule-visibility-items:
+     all      — a rule in every gap
+     between  — rules only between two adjacent items (skips outer edges)
+     around   — rules wherever at least one adjacent item exists
+   Useful when an auto-fill grid leaves trailing empty tracks.
+   ========================================================================== */
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 1.5rem;
+  column-rule: 1px solid oklch(0.85 0 0);
+  /* don't draw a rule next to empty tracks on a partial last row */
+  column-rule-visibility-items: between;
+}
+
+
+/* ==========================================================================
+   9. NAVIGATION / TOOLBAR PATTERN
+   Vertical dividers between inline items without separator elements.
    ========================================================================== */
 
 .nav-links {
@@ -172,7 +246,7 @@
 
 
 /* ==========================================================================
-   8. PRICING TABLE / COMPARISON GRID
+   10. PRICING TABLE / COMPARISON GRID
    Visual separators between plan columns.
    ========================================================================== */
 
@@ -185,7 +259,7 @@
 
 
 /* ==========================================================================
-   9. @supports FALLBACK
+   11. @supports FALLBACK
    Graceful degradation for gap decorations on grid/flex.
    Multicol column-rule needs no fallback (widely available).
    ========================================================================== */
@@ -196,3 +270,18 @@
     padding-inline-end: 1.5rem;
   }
 }
+
+
+/* ==========================================================================
+   BEST PRACTICES
+   - Prefer gap decorations over divider <div>s or :not(:last-child) borders:
+     they add zero DOM, never shift layout, and follow the gap automatically.
+   - Rule width does NOT widen the gap — keep rule width <= gap size so the
+     line sits inside the gutter instead of overlapping content.
+   - Animate column-rule-color / -width / -inset for hover and theme changes;
+     they are interpolatable.
+   - Use `visibility-items: between` with auto-fill/auto-fit grids to avoid
+     stray rules beside empty trailing tracks.
+   - Keep the @supports not (row-rule: …) fallback for grid/flex dividers;
+     multicol column-rule has been safe since 2017 and needs none.
+   ========================================================================== */

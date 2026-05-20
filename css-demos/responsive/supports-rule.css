@@ -2,13 +2,14 @@
  * @supports Feature Detection
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@supports
- * Baseline: 🟢 Widely Available
+ * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule_functions
+ * Baseline: 🟢 Widely Available  (at-rule() — Chrome 148+)
  * Support: 98%
  *
  * Task: Detect CSS feature support and provide progressive enhancement
  * Why: @supports gates modern CSS behind capability checks so fallbacks
  *      work in older browsers while modern browsers get enhanced styles
- * Last verified: 2026-02
+ * Last verified: 2026-05
  */
 
 
@@ -100,7 +101,35 @@
 
 
 /* ==========================================================================
-   5. COMMON PROGRESSIVE ENHANCEMENT PATTERNS
+   5. AT-RULE SUPPORT — check if a CSS at-rule is supported
+   Core: @supports at-rule()  (Chrome 148+)
+   Lets you feature-detect an at-rule before depending on it, instead of
+   guessing from a related property.
+   ========================================================================== */
+
+/* Detect support for an at-rule by name */
+@supports at-rule(@starting-style) {
+  .toast {
+    transition: opacity 0.2s;
+    @starting-style {
+      opacity: 0;
+    }
+  }
+}
+
+/* Gate registered custom properties on @property support */
+@supports at-rule(@property) {
+  /* safe to rely on @property type checking and animation */
+}
+
+/* Combine at-rule() with property and selector checks */
+@supports at-rule(@scope) and selector(:has(*)) {
+  /* @scope + :has() both available */
+}
+
+
+/* ==========================================================================
+   6. COMMON PROGRESSIVE ENHANCEMENT PATTERNS
    ========================================================================== */
 
 /* Anchor positioning with fallback */

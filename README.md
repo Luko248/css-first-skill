@@ -7,7 +7,7 @@
 This skill gives AI agents deep knowledge of modern CSS so they provide CSS-only solutions instead of reaching for JavaScript. It includes:
 
 - **7 behavioral rules** — CSS-only enforcement, logical properties, modern features, semantic intent analysis, framework detection, browser support, progressive enhancement
-- **29 production-ready CSS demos** — layout, responsive, container queries, animation, theming, positioning, interaction, visual, specificity, functions & values
+- **57 production-ready CSS demos** — layout, responsive, container queries, animation, theming, positioning, interaction, visual, specificity, functions & values
 - **Live MDN integration** — fetch current Baseline status and browser support data on demand
 
 ## Features
@@ -17,7 +17,7 @@ This skill gives AI agents deep knowledge of modern CSS so they provide CSS-only
 | Semantic Intent Recognition | Detects layout, animation, spacing, responsive, visual, and interaction intents                         |
 | Framework Detection         | Auto-detects React, Vue, Angular, Svelte, Tailwind, Bootstrap                                           |
 | Logical Properties First    | Prioritizes `inline-size`, `margin-inline`, etc. for internationalization                               |
-| Modern CSS (2021-2026)      | Container queries, view transitions, scroll-driven/triggered animations, `light-dark()`, anchor positioning, `@layer`, `@scope`, `if()`, `@function`, advanced `attr()`, `contrast-color()`, grid lanes |
+| Modern CSS (2021-2026)      | Container queries (incl. name-only), view transitions, scroll-driven/triggered animations, `light-dark()`, anchor positioning, `@layer`, `@scope`, `revert-rule`, `if()`, `@function`, advanced `attr()`, `contrast-color()`, grid lanes, gap decorations, `shape-outside` shapes |
 | Browser Support Awareness   | Every suggestion includes Baseline status (Widely Available / Newly Available / Limited / Experimental) |
 | Progressive Enhancement     | Core functionality first, enhancements layered with `@supports`                                         |
 
@@ -36,6 +36,7 @@ This skill gives AI agents deep knowledge of modern CSS so they provide CSS-only
 | Component theming    | Container style queries         | `css-demos/container/style-queries.css`           |
 | Sticky detection     | Scroll state queries            | `css-demos/container/scroll-state-queries.css`    |
 | Tooltip arrow flip   | Anchored container queries      | `css-demos/container/anchored-queries.css`        |
+| Container by name    | `@container` name without type  | `css-demos/container/named-queries.css`           |
 | Dark mode            | `light-dark()`                  | `css-demos/theming/light-dark-function.css`       |
 | Page transitions     | View Transitions (+ element-scoped) | `css-demos/animation/view-transitions.css`   |
 | Scroll effects       | Scroll-driven animations        | `css-demos/animation/scroll-driven.css`           |
@@ -48,12 +49,16 @@ This skill gives AI agents deep knowledge of modern CSS so they provide CSS-only
 | Form validation      | `:user-valid` / `:user-invalid` | `css-demos/visual/form-validation.css`            |
 | Color variations     | `color-mix()`                   | `css-demos/visual/color-mix.css`                  |
 | Modern shapes        | `corner-shape`                  | `css-demos/visual/corner-shape.css`               |
+| Text wrap around shapes | `shape-outside` shape functions | `css-demos/visual/shape-outside-functions.css` |
+| Underline ink skipping | `text-decoration-skip-ink`    | `css-demos/visual/text-decoration-skip-ink.css`   |
+| Crisp pixel-art scaling | `image-rendering: crisp-edges` | `css-demos/visual/image-rendering.css`          |
 | Conditional values   | `if()`                          | `css-demos/functions/css-if-function.css`         |
 | Reusable logic       | `@function`                     | `css-demos/functions/custom-functions.css`        |
 | Data-driven styles   | Advanced `attr()`               | `css-demos/functions/advanced-attr.css`           |
 | Auto contrast text   | `contrast-color()`              | `css-demos/functions/contrast-color.css`          |
 | Cascade control      | `@layer`                        | `css-demos/specificity/cascade-layers.css`        |
 | Scoped styles        | `@scope`                        | `css-demos/specificity/scope-rule.css`            |
+| Roll back one rule   | `revert-rule`                   | `css-demos/specificity/revert-rule.css`           |
 
 ## Structure
 
@@ -66,7 +71,7 @@ css-demos/
   INDEX.md                        # Full catalog with MDN links & baseline status
   layout/                         # Centering, spacing, subgrid, :has(), nesting, grid lanes
   responsive/                     # Media queries (range syntax), @supports
-  container/                      # Size, style, scroll-state, anchored queries
+  container/                      # Size, style, scroll-state, anchored, name-only queries
   animation/                      # View transitions, scroll-driven, scroll-triggered, @starting-style
   theming/                        # Dark mode with light-dark()
   positioning/                    # Anchor positioning

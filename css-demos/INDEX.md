@@ -84,7 +84,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - Baseline: 🟢 Widely Available (98%)
 - MDN: [@supports](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@supports)
 - Task: Detect CSS feature support and provide progressive enhancement
-- Features: Property support, `selector()`, `font-tech()`, `and`/`or`/`not` operators
+- Features: Property support, `selector()`, `font-tech()`, `at-rule()` at-rule detection (Chrome 148+), `and`/`or`/`not` operators
 
 ### [viewport-units.css](responsive/viewport-units.css)
 **Modern Viewport Units — Small, Large, Dynamic**
@@ -125,6 +125,14 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - Reference: [Chrome Blog](https://developer.chrome.com/blog/anchored-container-queries)
 - Task: Query which anchor position fallback is active and adapt styles
 - Features: `container-type: anchored`, `@container anchored(fallback:)`, tooltip arrow direction
+
+### [named-queries.css](container/named-queries.css)
+**Name-Only Container Queries**
+- Support: Chrome 148+
+- MDN: [@container](https://developer.mozilla.org/en-US/docs/Web/CSS/@container), [container-name](https://developer.mozilla.org/en-US/docs/Web/CSS/container-name)
+- Reference: [Chrome 148 Beta (Chrome Blog)](https://developer.chrome.com/blog/chrome-148-beta)
+- Task: Target a container by name alone — no `container-type` required
+- Features: `container-name` without `container-type`, unconditional `@container <name>` scoping, name-based `style()` queries, when size queries still need `container-type`
 
 ---
 
@@ -269,11 +277,12 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [gap-decorations.css](visual/gap-decorations.css)
 **Gap Decorations — column-rule & row-rule**
-- Baseline: column-rule (multicol) 🟢 Widely Available; gap decorations (grid/flex) 🟣 Experimental (Chrome 139+)
+- Baseline: column-rule (multicol) 🟢 Widely Available
+- Support: gap decorations (grid/flex) — Chrome 139+
 - MDN: [column-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule)
-- Reference: [Gap Decorations (Chrome Blog)](https://developer.chrome.com/blog/gap-decorations)
+- Reference: [Gap Decorations (Chrome Blog)](https://developer.chrome.com/blog/gap-decorations-stable)
 - Task: Draw separator lines between grid columns, flex items, or multicol columns
-- Features: `column-rule`, `row-rule`, `repeat()` patterns, `column-rule-offset`, multicol/grid/flex support, `@supports` fallback
+- Features: `column-rule`, `row-rule`, `repeat()` patterns, `column-rule-inset` (+ `overlap-join`), `column-rule-break` (`none`/`intersection`), `column-rule-visibility-items` (`between`/`around`), multicol/grid/flex support, `@supports` fallback
 
 ### [backdrop-filter.css](visual/backdrop-filter.css)
 **backdrop-filter — Glassmorphism & Background Effects**
@@ -336,6 +345,30 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - Task: Clip overflow while keeping focus outlines, shadows, and decorations visible
 - Features: `overflow: clip`, `overflow-clip-margin`, single-axis clipping, focus ring preservation, badge/ribbon overflow, `@supports` fallback
 
+### [shape-outside-functions.css](visual/shape-outside-functions.css)
+**shape-outside — rect(), xywh(), path(), shape()**
+- Support: Chrome 149+
+- MDN: [shape-outside](https://developer.mozilla.org/en-US/docs/Web/CSS/shape-outside), [path()](https://developer.mozilla.org/en-US/docs/Web/CSS/basic-shape/path), [shape()](https://developer.mozilla.org/en-US/docs/Web/CSS/basic-shape/shape)
+- Reference: [Chrome 149 Beta (Chrome Blog)](https://developer.chrome.com/blog/chrome-149-beta)
+- Task: Wrap inline text around a non-rectangular float exclusion shape
+- Features: `rect()`/`xywh()` rectangle exclusions, `path()` SVG-path exclusion, `shape()` unit-aware geometry, `shape-margin`, `@supports` fallback
+
+### [text-decoration-skip-ink.css](visual/text-decoration-skip-ink.css)
+**text-decoration-skip-ink: all**
+- Support: `all` keyword — Chrome 148+ (`auto`/`none` widely available)
+- MDN: [text-decoration-skip-ink](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-skip-ink)
+- Reference: [Chrome 148 Beta (Chrome Blog)](https://developer.chrome.com/blog/chrome-148-beta)
+- Task: Control how underlines skip over glyph descenders, including CJK
+- Features: `auto` (default), `all` (force skipping for every glyph incl. CJK), `none` (unbroken line), mixed-script typography
+
+### [image-rendering.css](visual/image-rendering.css)
+**image-rendering — Crisp Scaling for Pixel Art**
+- Support: `crisp-edges` contrast/edge-preserving scaling — Chrome 149+
+- MDN: [image-rendering](https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering)
+- Reference: [Chrome 149 Beta (Chrome Blog)](https://developer.chrome.com/blog/chrome-149-beta)
+- Task: Scale small raster images up without blurring them
+- Features: `auto` (smooth), `crisp-edges` (edge-preserving), `pixelated` (nearest-neighbour), sprites/QR/pixel-art game canvas use cases
+
 ---
 
 ## Functions & Values
@@ -368,7 +401,7 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - MDN: [sibling-index()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/sibling-index), [sibling-count()](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/sibling-count)
 - Spec: CSS Values and Units Module Level 5
 - Task: Dynamically style elements based on their position among siblings — like SCSS `@for` loops but resolved at render time
-- Features: Staggered animations (one-line), reverse stagger, rainbow colors, progressive sizing, circular layout without `--i`, dynamic opacity, equal-width flex columns, combined width+color distribution, SCSS `@for` vs `sibling-index()` comparison
+- Features: Staggered animations (one-line), reverse stagger, rainbow colors, progressive sizing, circular layout without `--i`, dynamic opacity, equal-width flex columns, combined width+color distribution, zero-based index loop (numbered list with relative-color ramp + `contrast-color()` + counters), SCSS `@for` vs `sibling-index()` comparison
 
 ### [trigonometric-functions.css](functions/trigonometric-functions.css)
 **CSS Trigonometric Functions — sin(), cos(), tan(), atan2()**
@@ -401,6 +434,14 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - MDN: [@scope](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@scope)
 - Task: Scope styles to DOM subtrees and control specificity with proximity
 - Features: Scope root/limit (donut scope), `:scope` pseudo-class, scoping proximity, low-specificity selectors, scope + nesting
+
+### [revert-rule.css](specificity/revert-rule.css)
+**revert-rule — Roll Back the Cascade by One Rule**
+- Support: Chrome 148+
+- MDN: [revert-rule](https://developer.mozilla.org/en-US/docs/Web/CSS/revert-rule)
+- Reference: [Chrome 148 Beta (Chrome Blog)](https://developer.chrome.com/blog/chrome-148-beta)
+- Task: Discard the current rule's value and fall back to the rest of the cascade
+- Features: `revert` vs `revert-layer` vs `revert-rule`, basic rollback, conditional declarations with `if()`, style-attribute escape hatch
 
 ---
 

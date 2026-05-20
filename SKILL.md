@@ -80,6 +80,7 @@ Production-ready CSS examples organized by category. See [`css-demos/INDEX.md`](
 | Component theming        | Container style queries         | `css-demos/container/style-queries.css`                |
 | Sticky detection         | Scroll state queries            | `css-demos/container/scroll-state-queries.css`         |
 | Tooltip arrow flip       | Anchored container queries      | `css-demos/container/anchored-queries.css`             |
+| Container by name only   | `@container` name without type  | `css-demos/container/named-queries.css`                |
 | Page transitions         | View Transitions (+ element-scoped) | `css-demos/animation/view-transitions.css`         |
 | Scroll effects           | Scroll-driven animations        | `css-demos/animation/scroll-driven.css`                |
 | Scroll reveals           | Scroll-triggered animations     | `css-demos/animation/scroll-triggered.css`             |
@@ -103,10 +104,13 @@ Production-ready CSS examples organized by category. See [`css-demos/INDEX.md`](
 | Adaptive text on bg      | `mix-blend-mode`                | `css-demos/visual/mix-blend-mode.css`                  |
 | Modern shapes            | `corner-shape`                  | `css-demos/visual/corner-shape.css`                    |
 | Responsive clipping      | `clip-path: shape()`            | `css-demos/visual/clip-path-shape.css`                 |
+| Text wrap around shapes  | `shape-outside` shape functions | `css-demos/visual/shape-outside-functions.css`         |
 | Gap separators           | `column-rule` / `row-rule`      | `css-demos/visual/gap-decorations.css`                 |
 | Optical text centering   | `text-box-trim`                 | `css-demos/visual/text-box-trim.css`                   |
 | Text justification       | `text-justify`                  | `css-demos/visual/text-justify.css`                    |
 | Focus outlines clipped   | `overflow: clip` + clip-margin  | `css-demos/visual/overflow-clip-margin.css`            |
+| Underline ink skipping   | `text-decoration-skip-ink`      | `css-demos/visual/text-decoration-skip-ink.css`        |
+| Crisp pixel-art scaling  | `image-rendering: crisp-edges`  | `css-demos/visual/image-rendering.css`                 |
 | Conditional values       | `if()`                          | `css-demos/functions/css-if-function.css`              |
 | Reusable CSS logic       | `@function`                     | `css-demos/functions/custom-functions.css`             |
 | Data-driven styles       | Advanced `attr()`               | `css-demos/functions/advanced-attr.css`                |
@@ -115,6 +119,7 @@ Production-ready CSS examples organized by category. See [`css-demos/INDEX.md`](
 | Staggered animations     | `sibling-index()` / `sibling-count()` | `css-demos/functions/sibling-functions.css`       |
 | Cascade control          | `@layer`                        | `css-demos/specificity/cascade-layers.css`             |
 | Scoped styles            | `@scope`                        | `css-demos/specificity/scope-rule.css`                 |
+| Roll back one rule       | `revert-rule`                   | `css-demos/specificity/revert-rule.css`                |
 | Custom select styling    | `appearance: base-select`       | `css-demos/native-customization/customizable-select.css` |
 | Reduced motion           | `prefers-reduced-motion`        | `css-demos/accessibility/prefers-reduced-motion.css`     |
 | High contrast            | `prefers-contrast`              | `css-demos/accessibility/prefers-reduced-motion.css`     |

@@ -211,7 +211,61 @@
 
 
 /* ==========================================================================
-   11. COMPARISON: SCSS @for vs sibling-index()
+   11. ZERO-BASED INDEX LOOP — numbered list with derived size & color
+   Shift sibling-index() to a 0-based --i, then drive every per-item value
+   (width, a color ramp) off that single custom property — like a CSS @for.
+   Combines sibling-index() + relative colors + contrast-color() + counters.
+   ========================================================================== */
+
+.index-loop {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: li-count;
+
+  > li {
+    /* 0-based index: 1st item → 0, 2nd → 1, ... */
+    --i: calc(sibling-index() - 1);
+
+    /* one --i drives both the size and the lightness ramp */
+    --inline-size: calc(2rem + (var(--i) * 2rem));
+    --bg-color: hsl(from red h s calc(10% + (var(--i) * 9%)));
+
+    inline-size: var(--inline-size);
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    background-color: var(--bg-color);
+
+    /* contrast-color() auto-picks readable text as the row lightens */
+    color: contrast-color(var(--bg-color));
+
+    /* counter() prints the position as generated content */
+    counter-increment: li-count;
+
+    &::before {
+      content: counter(li-count) ". ";
+    }
+  }
+}
+
+/*
+ * Why this pattern:
+ *  - A single --i feeds EVERY per-item value — no inline styles, no
+ *    :nth-child ladder, and it re-balances when items are added/removed.
+ *  - hsl(from red h s calc(...)) ramps lightness off a base color using
+ *    relative color syntax — see visual/relative-colors.css.
+ *  - contrast-color() keeps the label legible at every step instead of
+ *    hand-tuning a text color per row — see functions/contrast-color.css.
+ *  - sibling-index() returns an <integer> for math; counter()/counter-
+ *    increment supply the visible number as a <string>.
+ */
+
+
+/* ==========================================================================
+   12. COMPARISON: SCSS @for vs sibling-index()
 
    ❌ SCSS — compile-time, must know item count:
    @for $i from 1 through 6 {
