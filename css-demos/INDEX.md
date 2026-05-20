@@ -369,6 +369,13 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 - Task: Scale small raster images up without blurring them
 - Features: `auto` (smooth), `crisp-edges` (edge-preserving), `pixelated` (nearest-neighbour), sprites/QR/pixel-art game canvas use cases
 
+### [font-variant-numeric.css](visual/font-variant-numeric.css)
+**font-variant-numeric — Numeric Typography Control**
+- Baseline: 🟢 Widely Available (97%+, since 2020)
+- MDN: [font-variant-numeric](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric)
+- Task: Pick the right numeral glyphs — equal-width digits, slashed zero, old-style figures, fractions, ordinals
+- Features: `tabular-nums` for tables/timers/prices/counters (no digit jitter), `slashed-zero`, `lining-nums`/`oldstyle-nums`, `diagonal-fractions`/`stacked-fractions`, `ordinal`, `font-feature-settings` low-level fallback, `ch`-unit sizing
+
 ---
 
 ## Functions & Values
@@ -405,10 +412,11 @@ All CSS demos are organized by category with direct MDN links, baseline status, 
 
 ### [trigonometric-functions.css](functions/trigonometric-functions.css)
 **CSS Trigonometric Functions — sin(), cos(), tan(), atan2()**
-- Baseline: 🔵 Newly Available (93%)
+- Baseline: 🟢 Widely Available (95%+, since 2023)
 - MDN: [sin()](https://developer.mozilla.org/en-US/docs/Web/CSS/sin), [cos()](https://developer.mozilla.org/en-US/docs/Web/CSS/cos), [tan()](https://developer.mozilla.org/en-US/docs/Web/CSS/tan), [atan2()](https://developer.mozilla.org/en-US/docs/Web/CSS/atan2)
+- Reference: [CSS trigonometric functions (web.dev)](https://web.dev/articles/css-trig-functions)
 - Task: Position elements in circles, arcs, and radial patterns with pure CSS
-- Features: Circular menus, animated reveals, semicircle/arc layouts, clock faces, orbit animations, wave patterns, spirals, `@property` + trig, `atan2()` pointer rotation
+- Features: Circular menus, animated reveals, semicircle/arc layouts, clock faces, orbit animations, wave patterns, spirals, `@property` + trig, `tan()` slope geometry (diagonal placement, angled section divider, parallelogram lean), `atan2()` pointer rotation
 
 ### [contrast-color.css](functions/contrast-color.css)
 **contrast-color() Function**

@@ -5,11 +5,14 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/cos
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/tan
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/atan2
- * Baseline: 🔵 Newly Available (Chrome 111+, Firefox 108+, Safari 15.4+)
- * Support: 93%
+ * Reference: https://web.dev/articles/css-trig-functions
+ * Baseline: 🟢 Widely Available (since 2023)
+ * Support: 95%+
  *
  * Task: Position elements in circles, arcs, and radial patterns with pure CSS
- * Why: Eliminates JavaScript math and hardcoded translate values for circular layouts
+ * Why: Eliminates JavaScript math and hardcoded translate values for circular
+ *      layouts; tan() additionally derives slopes and angled-shape geometry
+ * Last verified: 2026-05
  */
 
 
@@ -164,16 +167,46 @@
 
 
 /* ==========================================================================
-   6. DIAGONAL POSITIONING — tan() for slope-based placement
-   Position an element along a diagonal line at a specific slope.
+   6. tan() — SLOPES, DIAGONALS & ANGLED SHAPES
+   Where sin()/cos() place points on a circle, tan() derives slope geometry:
+       tan(θ) = opposite / adjacent   →   opposite = adjacent * tan(θ)
+   Feed it one known side (a run or a height) plus an angle to get the other.
+   Avoid the asymptotes (90deg, 270deg, …) — tan() is undefined there.
    ========================================================================== */
 
+/* 6a. Diagonal positioning — drop a label along a fixed slope.
+   Vertical rise = horizontal run * tan(angle). */
 .diagonal-label {
   --slope-angle: 30deg;
-  --offset-x: 4rem;
+  --run: 4rem;
   translate:
-    var(--offset-x)
-    calc(tan(var(--slope-angle)) * var(--offset-x) * -1);
+    var(--run)
+    calc(tan(var(--slope-angle)) * var(--run) * -1);
+}
+
+/* 6b. Angled section divider — for a strip of known width, the height a
+   diagonal edge climbs is width * tan(angle). One --angle drives the cut. */
+.angled-strip {
+  --width: 20rem;
+  --angle: 5deg;
+  --rise: calc(var(--width) * tan(var(--angle)));
+  inline-size: var(--width);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - var(--rise)));
+}
+
+/* 6c. Parallelogram lean — the horizontal shift for a given lean angle is
+   height * tan(angle), so the slanted sides stay exact at any --lean. */
+.parallelogram {
+  --height: 8rem;
+  --lean: 15deg;
+  --shift: calc(var(--height) * tan(var(--lean)));
+  block-size: var(--height);
+  clip-path: polygon(
+    var(--shift) 0,
+    100% 0,
+    calc(100% - var(--shift)) 100%,
+    0 100%
+  );
 }
 
 

@@ -111,6 +111,7 @@ Production-ready CSS examples organized by category. See [`css-demos/INDEX.md`](
 | Focus outlines clipped   | `overflow: clip` + clip-margin  | `css-demos/visual/overflow-clip-margin.css`            |
 | Underline ink skipping   | `text-decoration-skip-ink`      | `css-demos/visual/text-decoration-skip-ink.css`        |
 | Crisp pixel-art scaling  | `image-rendering: crisp-edges`  | `css-demos/visual/image-rendering.css`                 |
+| Aligned / steady digits  | `font-variant-numeric: tabular-nums` | `css-demos/visual/font-variant-numeric.css`       |
 | Conditional values       | `if()`                          | `css-demos/functions/css-if-function.css`              |
 | Reusable CSS logic       | `@function`                     | `css-demos/functions/custom-functions.css`             |
 | Data-driven styles       | Advanced `attr()`               | `css-demos/functions/advanced-attr.css`                |
