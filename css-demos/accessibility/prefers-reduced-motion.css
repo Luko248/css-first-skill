@@ -4,14 +4,16 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-contrast
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-transparency
- * Baseline: 🟢 Widely Available (since January 2020)
- * Support: 97%+
+ * WebStatus: prefers-reduced-transparency
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome 119+, Firefox —, Safari —
  *
  * Task: Respect user motion preferences — disable or reduce animations,
  *       transitions, scroll effects, and auto-playing media
  * Why: Users with vestibular disorders, motion sensitivity, or cognitive
  *      disabilities can be physically harmed by excessive motion.
  *      This is not optional — it is a WCAG 2.1 AA requirement (2.3.3).
+ * Last verified: 2026-08-11
  */
 
 

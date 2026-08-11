@@ -2,11 +2,13 @@
  * stretch Sizing Keyword
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/stretch
+ * WebStatus: stretch
  * Baseline: 🟡 Limited Availability
  *
  * Task: Fill containing block while respecting margins
  * Why: Unlike 100% which sizes the content/border box, stretch sizes the
  *      margin box — so margins don't cause overflow
+ * Last verified: 2026-08-11
  */
 
 

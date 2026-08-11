@@ -6,12 +6,14 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/::picker(select)
  * MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/selectedcontent
  * Reference: https://developer.chrome.com/blog/a-customizable-select
- * Baseline: 🟣 Experimental (Chrome 135+)
- * Support: ~30%
+ * WebStatus: customizable-select
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome 135+, Firefox —, Safari —
  *
  * Task: Style native <select> with full visual control — picker, options, icons, animations
  * Why: Replaces JS-heavy custom dropdowns with native semantics, accessibility, and keyboard support
  *      Progressive enhancement — non-supporting browsers get standard <select> with no breakage
+ * Last verified: 2026-08-11
  */
 
 

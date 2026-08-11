@@ -3,11 +3,13 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/Using_interest_invokers
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/interest-delay
- * Baseline: 🟣 Experimental (Chrome behind flag)
+ * WebStatus: interest-invokers
+ * Baseline: 🟡 Limited Availability
  *
  * Task: Show popovers on hover/focus without JavaScript
  * Why: Declarative hover intent — replaces JS mouseenter/mouseleave handlers,
  *      with built-in delay control and accessibility (focus triggers too)
+ * Last verified: 2026-08-11
  */
 
 

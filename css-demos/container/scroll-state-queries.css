@@ -3,13 +3,14 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_conditional_rules/Container_scroll-state_queries
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/@container#scroll-state
- * Baseline: 🟣 Experimental
- * Support: Chrome 133+
+ * WebStatus: container-scroll-state-queries
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome 133+, Firefox —, Safari —
  *
  * Task: Style elements based on scroll state (scrollable, stuck, snapped)
  * Why: Query whether an element is scrollable, stuck via position: sticky,
  *      or snapped via scroll-snap — no JavaScript scroll listeners needed
- * Last verified: 2026-02
+ * Last verified: 2026-08-11
  */
 
 

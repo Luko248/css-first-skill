@@ -4,11 +4,13 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/text-box-trim
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/text-box-edge
  * Reference: https://developer.chrome.com/blog/css-text-box-trim
+ * WebStatus: text-box
  * Baseline: 🟡 Limited Availability
  *
  * Task: Remove extra whitespace above/below text for pixel-perfect vertical centering
  * Why: Fonts include invisible leading (half-leading) above and below glyphs —
  *      this makes padding-based centering look off. text-box-trim removes it.
+ * Last verified: 2026-08-11
  */
 
 

@@ -2,19 +2,22 @@
  * overscroll-behavior
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/overscroll-behavior
+ * WebStatus: overscroll-behavior
  * Baseline: 🟡 Limited Availability
- * Support: Chrome & Firefox; logical longhands not supported in Safari
+ * Support: Chrome 144+, Firefox 150+, Safari —
  *
  * Task: Prevent scroll chaining, pull-to-refresh, and bounce effects
  * Why: Native solution replaces JS scroll-locking hacks with a single declaration
+ * Last verified: 2026-08-11
  */
 
 /* ============================================================
- * 1. Values — auto | contain | none
+ * 1. Values — auto | contain | none | chain
  *
  * auto    — default; scroll chains to ancestors normally
  * contain — stops scroll chaining; no pull-to-refresh or swipe nav
  * none    — stops chaining AND suppresses overscroll glow/bounce
+ * chain   — allows chaining but suppresses the local edge effect (Chrome 150+)
  * ============================================================ */
 
 /* ============================================================
@@ -98,4 +101,11 @@ html {
 .snap-container > section {
   block-size: 100dvh;
   scroll-snap-align: start;
+}
+
+/* Allow propagation to an ancestor without a local glow/stretch effect. */
+@supports (overscroll-behavior: chain) {
+  .nested-feed {
+    overscroll-behavior-block: chain;
+  }
 }

@@ -2,14 +2,15 @@
  * Anchored Container Queries
  *
  * Reference: https://developer.chrome.com/blog/anchored-container-queries
- * Baseline: 🟣 Experimental
- * Support: Chrome 141+
+ * WebStatus: container-anchor-position-queries
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome 143+, Firefox —, Safari —
  *
  * Task: Query which anchor position fallback is active and adapt styles
  * Why: When anchor-positioned elements flip via position-try-fallbacks,
  *      anchored container queries let you detect which fallback is active
  *      and adjust content (e.g. arrow direction, alignment) accordingly
- * Last verified: 2026-02
+ * Last verified: 2026-08-11
  */
 
 

@@ -3,14 +3,16 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/sibling-index
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/sibling-count
+ * WebStatus: sibling-count
  * Baseline: 🟡 Limited Availability
- * Support: Chrome 137+
+ * Support: Chrome 138+, Firefox —, Safari 26.2+
  * Spec: CSS Values and Units Module Level 5
  *
  * Task: Dynamically style elements based on their position among siblings
  * Why: Replaces repetitive :nth-child() rules and inline --i variables
  *      with a single declaration — like SCSS @for loops but resolved at
  *      render time, adapting automatically when items are added/removed
+ * Last verified: 2026-08-11
  */
 
 

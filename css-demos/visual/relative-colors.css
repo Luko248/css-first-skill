@@ -2,12 +2,14 @@
  * Relative Color Syntax — Color Conversion & Channel Manipulation
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Colors/Using_relative_colors
- * Baseline: 🔵 Newly Available (Chrome 111+, Safari 16.4+, Firefox 128+)
- * Support: 90%
+ * WebStatus: relative-color
+ * Baseline: 🔵 Newly Available
+ * Support: Chrome 125+, Firefox 128+, Safari 18+
  *
  * Task: Create color variants, convert between color spaces, manipulate channels
  * Why: Generate tints, shades, complementary colors, and opacity variants from
  *      a single base color — no hardcoded hex values, fully dynamic theming
+ * Last verified: 2026-08-11
  */
 
 

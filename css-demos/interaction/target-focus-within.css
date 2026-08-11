@@ -3,13 +3,15 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/:target
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-within
+ * WebStatus: focus-within
  * Baseline: 🟢 Widely Available
- * Support: :target 99%, :focus-within 97%
+ * Support: Chrome 60+, Firefox 52+, Safari 10.1+
  *
  * Task: Highlight anchor-linked sections, animate on navigation,
  *       and style containers when any child has focus
  * Why: Pure CSS interactivity without JavaScript — respond to URL hash
  *      changes and focus state propagation
+ * Last verified: 2026-08-11
  */
 
 

@@ -2,8 +2,9 @@
  * font-variant-numeric — Numeric Typography Control
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric
- * Baseline: 🟢 Widely Available (since 2020)
- * Support: 97%+
+ * WebStatus: font-variant-numeric
+ * Baseline: 🟢 Widely Available
+ * Support: Chrome 52+, Firefox 34+, Safari 9.1+
  *
  * Task: Pick the right numeral glyphs — equal-width digits, slashed zero,
  *       old-style figures, real fractions, ordinals
@@ -11,7 +12,7 @@
  *      than a "0"). For tables, timers, prices, and any value that updates,
  *      that causes column misalignment and width jitter. font-variant-numeric
  *      is the readable, high-level API for OpenType numeral features.
- * Last verified: 2026-05
+ * Last verified: 2026-08-11
  */
 
 

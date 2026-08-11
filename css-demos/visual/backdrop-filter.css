@@ -2,12 +2,14 @@
  * backdrop-filter — Glassmorphism & Background Effects
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
- * Baseline: 🔵 Newly Available (since Sept 2024)
- * Support: 92%
+ * WebStatus: backdrop-filter
+ * Baseline: 🔵 Newly Available
+ * Support: Chrome 76+, Firefox 103+, Safari 18+
  *
  * Task: Apply visual effects to the area behind an element (blur, brightness, etc.)
  * Why: Creates frosted glass, tinted overlays, and depth effects purely in CSS —
  *      the element must be semi-transparent for the effect to show through
+ * Last verified: 2026-08-11
  */
 
 

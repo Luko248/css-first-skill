@@ -120,7 +120,7 @@ When user asks for a feature:
 
 1. **Ask yourself**: "Can CSS do this?"
 2. **If yes**: Provide CSS-only solution
-3. **If unsure**: Research modern CSS features (2021-2025)
+3. **If unsure**: Research current modern CSS features and live Baseline data
 4. **If truly impossible**: Explain why CSS alone won't work, then provide minimal JavaScript
 
 ## Progressive Enhancement
@@ -154,7 +154,7 @@ Before suggesting any solution, validate:
 
 - [ ] Does this require JavaScript?
 - [ ] Is there a modern CSS alternative?
-- [ ] Have I checked 2021-2025 CSS features?
+- [ ] Have I checked current CSS features and their live WebStatus records?
 - [ ] Can I use `<dialog>`, `<details>`, or other semantic HTML?
 - [ ] Can anchor positioning, container queries, or view transitions help?
 

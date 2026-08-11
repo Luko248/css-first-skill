@@ -3,12 +3,14 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/text-justify
  * Spec: CSS Text Module Level 3
- * Baseline: 🟡 Limited Availability (Chrome 145+, Firefox 55+)
+ * WebStatus: text-justify
+ * Baseline: 🟡 Limited Availability
  *
  * Task: Control how text-align: justify distributes space — between words or characters
  * Why: Different languages need different justification strategies.
  *      inter-word suits Latin scripts, inter-character suits CJK.
  *      Now controllable in CSS without language-specific hacks.
+ * Last verified: 2026-08-11
  */
 
 

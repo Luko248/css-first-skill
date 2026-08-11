@@ -2,13 +2,14 @@
  * @layer — Cascade Layers
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@layer
+ * WebStatus: cascade-layers
  * Baseline: 🟢 Widely Available
- * Support: 95%
+ * Support: Chrome 99+, Firefox 97+, Safari 15.4+
  *
  * Task: Control specificity and cascade order without selector hacks
  * Why: @layer lets you define explicit precedence between style origins,
  *      making specificity predictable and eliminating !important wars
- * Last verified: 2026-02
+ * Last verified: 2026-08-11
  */
 
 

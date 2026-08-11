@@ -3,12 +3,14 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path
  * Reference: https://developer.chrome.com/blog/css-shape
- * Baseline: 🔵 Newly Available (shape() — since Feb 2026)
+ * WebStatus: shape-function
+ * Baseline: 🔵 Newly Available
  * Support: Chrome 135+, Firefox 148+, Safari 18.4+
  *
  * Task: Create responsive clip shapes with curves, animate/morph them on scroll
  * Why: shape() accepts CSS units + custom properties — unlike path() which is
  *      SVG-only fixed pixels. Enables responsive curved clipping and smooth morphing.
+ * Last verified: 2026-08-11
  */
 
 
@@ -44,7 +46,6 @@
     close
   );
 }
-
 
 /* ==========================================================================
    2. SCROLL-DRIVEN SHAPE MORPHING

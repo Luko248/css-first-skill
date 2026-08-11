@@ -4,13 +4,14 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
  *
+ * WebStatus: light-dark
  * Baseline: 🔵 Newly Available
- * Support: 90% (Chrome 123+, Safari 17.5+, Firefox 120+)
+ * Support: Chrome 123+, Firefox 120+, Safari 17.5+
  *
  * Task: Implement dark mode support
  * Why: Native CSS dark mode with light-dark() function and color-scheme property.
  *      No JavaScript or media queries needed for basic theming.
- * Last verified: 2026-02
+ * Last verified: 2026-08-11
  */
 
 :root {

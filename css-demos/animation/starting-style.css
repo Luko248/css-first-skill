@@ -3,13 +3,14 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/interpolate-size
+ * WebStatus: starting-style
  * Baseline: 🔵 Newly Available
- * Support: 87%
+ * Support: Chrome 117+, Firefox 129+, Safari 17.5+
  *
  * Task: Animate elements entering/exiting the DOM (dialogs, popovers, display changes)
  * Why: @starting-style defines "from" state when element first renders;
  *      interpolate-size enables transitions to/from auto, min-content, max-content
- * Last verified: 2026-02
+ * Last verified: 2026-08-11
  */
 
 

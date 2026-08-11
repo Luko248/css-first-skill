@@ -8,12 +8,14 @@ A CSS-First Agent Skill — a knowledge base of rules, CSS demos, and references
 
 ## Development Notes
 
-This is a knowledge base repository with no build process or test runner. All content is static markdown and CSS files meant to be read by AI agents.
+This is a knowledge-base repository with no build process. Markdown and CSS are read
+by agents; `scripts/update_baseline.py` refreshes support snapshots and
+`scripts/test_update_baseline.py` covers updater regressions.
 
 ## Coding Style & Naming Conventions
 
 - Indentation: 2 spaces in Markdown, 2 spaces in CSS examples
-- Prefer logical properties and modern CSS features (2021-2025)
+- Prefer logical properties and modern CSS features (2021-2026)
 - Demo files: `css-demos/<category>/<kebab-case>.css`
 - Markdown sections: Title Case headings
 - Demos should be self-documenting with brief, high-signal comments and MDN links
@@ -28,8 +30,10 @@ All examples in `css-demos/` follow this header format:
  * [Feature Name]
  *
  * MDN: [Direct MDN link]
- * Baseline: [🟢/🔵/🟡/🟣 Status]
- * Support: [Percentage]
+ * WebStatus: [exact feature ID, when available]
+ * Baseline: [🟢/🔵/🟡/🟣 official status]
+ * Support: [first supporting browser versions]
+ * Last verified: [YYYY-MM-DD]
  *
  * Task: [What it does]
  * Why: [Rationale for approach]
@@ -40,9 +44,11 @@ All examples in `css-demos/` follow this header format:
 
 1. Choose appropriate category folder in `css-demos/`
 2. Follow the header format above
-3. Use modern CSS features (2021-2025) and logical properties throughout
-4. Update `css-demos/INDEX.md` with new entry
-5. Verify the example works in a modern browser
+3. Use modern CSS features (2021-2026) and logical properties throughout
+4. Update `css-demos/INDEX.md` with a new entry
+5. Add an exact WebStatus feature ID when one exists; otherwise cite a release note/spec
+6. Run `python3 scripts/update_baseline.py --check`
+7. Verify the example in a target browser when available
 
 ## Adding New Rules
 
@@ -66,7 +72,8 @@ All examples in `css-demos/` follow this header format:
 - `SKILL.md` — Main skill definition (capabilities, rules table, quick reference)
 - `references/rules/` — Behavioral rules (7 files)
 - `references/live-mdn-fetch.md` — Live MDN data fetch workflow
-- `css-demos/INDEX.md` — Catalog of all 58 CSS examples with metadata
+- `css-demos/INDEX.md` — Catalog of all 72 CSS examples with metadata
+- `scripts/update_baseline.py` — Live WebStatus snapshot updater
 
 ## CSS Demo Categories
 

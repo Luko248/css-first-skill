@@ -2,13 +2,14 @@
  * @scope — Scoped Styles
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@scope
+ * WebStatus: scope
  * Baseline: 🔵 Newly Available
- * Support: 87%
+ * Support: Chrome 143+, Firefox 146+, Safari 26.2+
  *
  * Task: Scope styles to DOM subtrees and control specificity with proximity
  * Why: @scope restricts selector matching to a subtree, avoids leaking
  *      styles, and uses proximity-based resolution instead of specificity wars
- * Last verified: 2026-02
+ * Last verified: 2026-08-11
  */
 
 

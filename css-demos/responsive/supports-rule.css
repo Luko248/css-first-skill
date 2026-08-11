@@ -3,13 +3,14 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@supports
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_syntax/At-rule_functions
- * Baseline: 🟢 Widely Available  (at-rule() — Chrome 148+)
- * Support: 98%
+ * WebStatus: supports-at-rule
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome 148+, Firefox —, Safari —
  *
  * Task: Detect CSS feature support and provide progressive enhancement
  * Why: @supports gates modern CSS behind capability checks so fallbacks
  *      work in older browsers while modern browsers get enhanced styles
- * Last verified: 2026-05
+ * Last verified: 2026-08-11
  */
 
 
@@ -129,7 +130,25 @@
 
 
 /* ==========================================================================
-   6. COMMON PROGRESSIVE ENHANCEMENT PATTERNS
+   6. NAMED FEATURES — capabilities that property tests cannot express
+   Chrome 150+; the current standardized names are intentionally limited.
+   ========================================================================== */
+
+@supports named-feature(anchor-position-follows-transforms) {
+  .anchored-overlay {
+    /* The overlay follows transforms applied to its anchor. */
+  }
+}
+
+@supports named-feature(single-axis-scroll-container) {
+  .scroll-layout {
+    /* A single-axis scroll container receives the specified behavior. */
+  }
+}
+
+
+/* ==========================================================================
+   7. COMMON PROGRESSIVE ENHANCEMENT PATTERNS
    ========================================================================== */
 
 /* Anchor positioning with fallback */

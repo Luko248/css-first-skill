@@ -3,12 +3,13 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/attr
  * Reference: https://developer.chrome.com/blog/advanced-attr
- * Baseline: 🟣 Experimental (Chrome 133+)
+ * WebStatus: attr
+ * Baseline: 🟡 Limited Availability
  *
  * Task: Read HTML attributes as typed CSS values — colors, numbers, lengths
  * Why: Advanced attr() with type() turns data attributes into real CSS values,
  *      enabling data-driven styling without JavaScript or inline styles
- * Last verified: 2026-02
+ * Last verified: 2026-08-11
  */
 
 

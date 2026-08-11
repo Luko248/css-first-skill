@@ -4,12 +4,13 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Custom_functions_and_mixins
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@function
  * Spec: https://drafts.csswg.org/css-mixins-1/
- * Baseline: 🟣 Experimental (@function in Chrome 137+, @mixin not yet implemented)
+ * WebStatus: function
+ * Baseline: 🟡 Limited Availability
  *
  * Task: Create reusable CSS functions that accept arguments and return values
  * Why: @function brings DRY logic to CSS — define calculations, theme tokens,
  *      and responsive values once, reuse everywhere with type safety
- * Last verified: 2026-02
+ * Last verified: 2026-08-11
  */
 
 

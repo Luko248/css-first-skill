@@ -11,7 +11,7 @@
  * Why: shape-outside already supported circle()/ellipse()/polygon(); these
  *      functions add rectangle coordinates (rect/xywh), raw SVG paths
  *      (path), and CSS-native, unit-aware geometry (shape)
- * Last verified: 2026-05
+ * Last verified: 2026-08-11
  */
 
 

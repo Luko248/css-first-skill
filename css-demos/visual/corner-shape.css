@@ -4,8 +4,9 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/corner-shape
  * Reference: https://developer.chrome.com/blog/implementing-corner-shape?hl=en
  * Spec: CSS Borders and Box Decorations Module Level 4
- * Baseline: 🟣 Experimental
- * Support: Chrome 139+
+ * WebStatus: corner-shape
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome 139+, Firefox —, Safari —
  *
  * Task: Create modern border shapes — bevels, scoops, squircles, notches, tooltip arrows
  * Why: corner-shape goes beyond round corners to create distinctive UI shapes
@@ -13,7 +14,7 @@
  *
  * CRITICAL: corner-shape has NO EFFECT without an active border-radius.
  * If border-radius is 0 or unset, corner-shape is ignored.
- * Last verified: 2026-04
+ * Last verified: 2026-08-11
  */
 
 

@@ -6,13 +6,14 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/tan
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/atan2
  * Reference: https://web.dev/articles/css-trig-functions
- * Baseline: 🟢 Widely Available (since 2023)
- * Support: 95%+
+ * WebStatus: trig-functions
+ * Baseline: 🟢 Widely Available
+ * Support: Chrome 111+, Firefox 108+, Safari 15.4+
  *
  * Task: Position elements in circles, arcs, and radial patterns with pure CSS
  * Why: Eliminates JavaScript math and hardcoded translate values for circular
  *      layouts; tan() additionally derives slopes and angled-shape geometry
- * Last verified: 2026-05
+ * Last verified: 2026-08-11
  */
 
 

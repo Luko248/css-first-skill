@@ -279,7 +279,7 @@
   }
 }
 
-/* Layer 4: Container Queries (🔵 Newly Available) */
+/* Layer 4: Container Queries (live status: 🟢 Widely Available in 2026) */
 @supports (container-type: inline-size) {
   .grid {
     container-type: inline-size;

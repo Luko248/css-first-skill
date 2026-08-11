@@ -14,15 +14,16 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/::view-transition-new
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/::view-transition-group-children
  *
- * Baseline: 🔵 Newly Available
- * Support: 90% — SPA (Chrome 111+, Firefox 132+, Safari 18+)
+ * WebStatus: view-transitions-element-scoped
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome 147+, Firefox —, Safari —
  *          MPA cross-document (Chrome 126+, Safari 18.2+)
  *          Element-scoped (Chrome 147+)
  *
  * Task: Add smooth transitions between page states — MPA, SPA, and scoped
  * Why: Native snapshot-based transitions replace JS animation libraries
  * Reference: https://lukaschylik.dev/blog/articles/css-view-transitions/
- * Last verified: 2026-04
+ * Last verified: 2026-08-11
  */
 
 

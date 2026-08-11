@@ -2,12 +2,14 @@
  * mix-blend-mode — Adaptive Content & Visual Blending
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode
- * Baseline: 🟢 Widely Available (since Jan 2020)
- * Support: 97%
+ * WebStatus: mix-blend-mode
+ * Baseline: 🟢 Widely Available
+ * Support: Chrome 41+, Firefox 32+, Safari 8+
  *
  * Task: Make text/content adapt color based on background, create visual effects
  * Why: Pure CSS color adaptation — no JavaScript needed to detect background
  *      lightness and swap text color
+ * Last verified: 2026-08-11
  */
 
 

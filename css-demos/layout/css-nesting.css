@@ -3,13 +3,14 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector
- * Baseline: 🔵 Newly Available
- * Support: 91%
+ * WebStatus: nesting
+ * Baseline: 🟢 Widely Available
+ * Support: Chrome 120+, Firefox 117+, Safari 17.2+
  *
  * Task: Write component styles with native CSS nesting (no preprocessor)
  * Why: Native CSS nesting reduces repetition and groups related styles
  *      without Sass/Less — the & selector works natively in browsers
- * Last verified: 2026-02
+ * Last verified: 2026-08-11
  */
 
 

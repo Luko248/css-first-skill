@@ -2,12 +2,14 @@
  * isolation: isolate — Stacking Context Control
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/isolation
- * Baseline: 🟢 Widely Available (since Jan 2020)
- * Support: 97%
+ * WebStatus: isolation
+ * Baseline: 🟢 Widely Available
+ * Support: Chrome 41+, Firefox 36+, Safari 8+
  *
  * Task: Fix z-index issues by creating explicit stacking contexts
  * Why: isolation: isolate is the cleanest way to create a stacking context —
  *      no side effects unlike position, opacity, or transform hacks
+ * Last verified: 2026-08-11
  */
 
 

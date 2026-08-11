@@ -2,12 +2,13 @@
  * CSS if() Function
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/if
- * Baseline: 🟣 Experimental
+ * WebStatus: if
+ * Baseline: 🟡 Limited Availability
  *
  * Task: Apply conditional values inline without at-rules
  * Why: if() enables style, media, and supports conditions directly
  *      in property values — no need for separate @media or @container blocks
- * Last verified: 2026-05
+ * Last verified: 2026-08-11
  */
 
 

@@ -4,13 +4,14 @@
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/@container#querying_custom_properties
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_size_and_style_queries
  *
- * Baseline: 🟡 Limited Availability
- * Support: 78% (Chrome 111+, Safari 18+)
+ * WebStatus: container-style-queries
+ * Baseline: 🔵 Newly Available
+ * Support: Chrome 111+, Firefox 151+, Safari 18+
  *
  * Task: Style components based on parent state
  * Why: Container style queries allow components to respond to parent custom properties,
  *      enabling true component-driven styling without JavaScript.
- * Last verified: 2026-02
+ * Last verified: 2026-08-11
  */
 
 .card-container {

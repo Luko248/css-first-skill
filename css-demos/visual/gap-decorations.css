@@ -3,13 +3,14 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule
  * Reference: https://developer.chrome.com/blog/gap-decorations-stable
- * Baseline: column-rule (multicol) 🟢 Widely Available (since 2017)
- * Support: gap decorations (grid/flex) — Chrome 139+
+ * WebStatus: gap-decorations
+ * Baseline: 🟡 Limited Availability
+ * Support: Chrome 149+, Firefox —, Safari —
  *
  * Task: Draw separator lines between grid columns, flex items, or multicol columns
  * Why: Pure CSS decorative lines with no layout impact — replaces border hacks,
  *      pseudo-elements, and extra divider DOM nodes
- * Last verified: 2026-05
+ * Last verified: 2026-08-11
  */
 
 

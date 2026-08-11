@@ -1,93 +1,75 @@
-# CSS-First Agent Skill
+# CSS First Skill
 
-> Transform any AI agent into a CSS-first expert. Zero-JavaScript solutions using cutting-edge CSS features (2021-2026).
+A reusable agent skill for modern, accessible CSS-first implementation advice. It
+combines semantic intent analysis, logical properties, progressive enhancement, 72
+CSS demos, and live Web Platform Baseline data.
 
-## What It Does
+## What Changed
 
-This skill gives AI agents deep knowledge of modern CSS so they provide CSS-only solutions instead of reaching for JavaScript. It includes:
+- Baseline labels now use the official WebStatus definitions, never usage-percentage
+  buckets.
+- `scripts/update_baseline.py` refreshes mapped demo headers and index entries from
+  `api.webstatus.dev`.
+- The catalog includes author-facing CSS additions from Chrome 148 through 152.
+- Features without an exact WebStatus record remain explicitly experimental/unknown
+  and cite a browser release note or specification.
 
-- **7 behavioral rules** — CSS-only enforcement, logical properties, modern features, semantic intent analysis, framework detection, browser support, progressive enhancement
-- **57 production-ready CSS demos** — layout, responsive, container queries, animation, theming, positioning, interaction, visual, specificity, functions & values
-- **Live MDN integration** — fetch current Baseline status and browser support data on demand
+## Use
 
-## Features
+Ask an agent to use `$css-first` for CSS implementation, browser support, current
+Baseline status, or modern web-platform feature questions.
 
-| Capability                  | Description                                                                                             |
-| --------------------------- | ------------------------------------------------------------------------------------------------------- |
-| Semantic Intent Recognition | Detects layout, animation, spacing, responsive, visual, and interaction intents                         |
-| Framework Detection         | Auto-detects React, Vue, Angular, Svelte, Tailwind, Bootstrap                                           |
-| Logical Properties First    | Prioritizes `inline-size`, `margin-inline`, etc. for internationalization                               |
-| Modern CSS (2021-2026)      | Container queries (incl. name-only), view transitions, scroll-driven/triggered animations, `light-dark()`, anchor positioning, `@layer`, `@scope`, `revert-rule`, `if()`, `@function`, advanced `attr()`, `contrast-color()`, grid lanes, gap decorations, `shape-outside` shapes |
-| Browser Support Awareness   | Every suggestion includes Baseline status (Widely Available / Newly Available / Limited / Experimental) |
-| Progressive Enhancement     | Core functionality first, enhancements layered with `@supports`                                         |
+The skill will:
 
-## Quick Reference
+1. identify the interface intent and repository context;
+2. prefer semantic HTML and CSS over unnecessary JavaScript;
+3. choose logical, accessible, interoperable primitives;
+4. fetch current Baseline data when support matters;
+5. provide a fallback for Limited Availability or experimental features;
+6. verify browser-facing behavior when a browser is available.
 
-| Status | User Intent          | CSS Solution                    | Demo                                              |
-| :----: | -------------------- | ------------------------------- | ------------------------------------------------- |
-| 🟢 | Center element       | Flexbox / Grid                  | `css-demos/layout/centering-logical.css`          |
-| 🟢 | Aligned grids        | Subgrid                         | `css-demos/layout/subgrid.css`                    |
-| 🔵 | Parent selection     | `:has()`                        | `css-demos/layout/has-selector.css`               |
-| 🔵 | Component styles     | CSS Nesting                     | `css-demos/layout/css-nesting.css`                |
-| 🟣 | Masonry layout       | Grid Lanes                      | `css-demos/layout/grid-lanes-masonry.css`         |
-| 🟢 | Responsive layout    | Media queries (range syntax)    | `css-demos/responsive/media-queries.css`          |
-| 🟢 | Feature detection    | `@supports`                     | `css-demos/responsive/supports-rule.css`          |
-| 🟢 | Container responsive | Container size queries          | `css-demos/container/size-queries.css`            |
-| 🟡 | Component theming    | Container style queries         | `css-demos/container/style-queries.css`           |
-| 🟣 | Sticky detection     | Scroll state queries            | `css-demos/container/scroll-state-queries.css`    |
-| 🟣 | Tooltip arrow flip   | Anchored container queries      | `css-demos/container/anchored-queries.css`        |
-| 🟣 | Container by name    | `@container` name without type  | `css-demos/container/named-queries.css`           |
-| 🔵 | Dark mode            | `light-dark()`                  | `css-demos/theming/light-dark-function.css`       |
-| 🔵 | Page transitions     | View Transitions (+ element-scoped) | `css-demos/animation/view-transitions.css`   |
-| 🟡 | Scroll effects       | Scroll-driven animations        | `css-demos/animation/scroll-driven.css`           |
-| 🟣 | Scroll reveals       | Scroll-triggered animations     | `css-demos/animation/scroll-triggered.css`        |
-| 🔵 | Entry/exit animation | `@starting-style`               | `css-demos/animation/starting-style.css`          |
-| 🟡 | Tooltips             | Anchor Positioning              | `css-demos/positioning/anchor-positioning.css`    |
-| 🟣 | Carousel / Tabs      | CSS Carousel                    | `css-demos/interaction/css-carousel.css`          |
-| 🔵 | Popovers / Dropdowns | Popover API                     | `css-demos/interaction/popover.css`               |
-| 🟢 | Touch vs pointer     | Hover media queries             | `css-demos/interaction/hover-media-queries.css`   |
-| 🟢 | Form validation      | `:user-valid` / `:user-invalid` | `css-demos/visual/form-validation.css`            |
-| 🟢 | Color variations     | `color-mix()`                   | `css-demos/visual/color-mix.css`                  |
-| 🟣 | Modern shapes        | `corner-shape`                  | `css-demos/visual/corner-shape.css`               |
-| 🟣 | Text wrap around shapes | `shape-outside` shape functions | `css-demos/visual/shape-outside-functions.css` |
-| 🔵 | Underline ink skipping | `text-decoration-skip-ink`    | `css-demos/visual/text-decoration-skip-ink.css`   |
-| 🔵 | Crisp pixel-art scaling | `image-rendering: crisp-edges` | `css-demos/visual/image-rendering.css`          |
-| 🟢 | Aligned / steady digits | `font-variant-numeric: tabular-nums` | `css-demos/visual/font-variant-numeric.css` |
-| 🟣 | Conditional values   | `if()`                          | `css-demos/functions/css-if-function.css`         |
-| 🟣 | Reusable logic       | `@function`                     | `css-demos/functions/custom-functions.css`        |
-| 🟣 | Data-driven styles   | Advanced `attr()`               | `css-demos/functions/advanced-attr.css`           |
-| 🔵 | Auto contrast text   | `contrast-color()`              | `css-demos/functions/contrast-color.css`          |
-| 🟢 | Cascade control      | `@layer`                        | `css-demos/specificity/cascade-layers.css`        |
-| 🔵 | Scoped styles        | `@scope`                        | `css-demos/specificity/scope-rule.css`            |
-| 🟣 | Roll back one rule   | `revert-rule`                   | `css-demos/specificity/revert-rule.css`           |
+## Baseline Categories
 
-## Structure
+| Label | Official meaning |
+|---|---|
+| 🟢 Widely Available | Interoperable in the core browser set for at least 30 months |
+| 🔵 Newly Available | Interoperable in the core browser set for less than 30 months |
+| 🟡 Limited Availability | Core-browser interoperability is incomplete |
+| 🟣 Experimental / unknown | No usable WebStatus record; inspect releases and specs |
 
-```
-SKILL.md                          # Skill definition (loaded by agents)
-references/
-  rules/                          # 7 behavioral rules
-  live-mdn-fetch.md               # Live MDN data fetch workflow
-css-demos/
-  INDEX.md                        # Full catalog with MDN links & baseline status
-  layout/                         # Centering, spacing, subgrid, :has(), nesting, grid lanes
-  responsive/                     # Media queries (range syntax), @supports
-  container/                      # Size, style, scroll-state, anchored, name-only queries
-  animation/                      # View transitions, scroll-driven, scroll-triggered, @starting-style
-  theming/                        # Dark mode with light-dark()
-  positioning/                    # Anchor positioning
-  interaction/                    # CSS Carousel, popover, hover media queries
-  visual/                         # Form validation, color-mix(), corner-shape
-  functions/                      # if(), @function, advanced attr(), contrast-color()
-  specificity/                    # @layer cascade layers, @scope scoped styles
+Baseline is not a market-share percentage. Project browser targets can still be
+stricter than a generic Baseline label.
+
+## Refresh Support Snapshots
+
+```bash
+python3 scripts/update_baseline.py --check
+python3 scripts/update_baseline.py --write
 ```
 
-## Baseline Status Indicators
+The updater uses the official WebStatus API, validates the response shape, and leaves
+unmapped release features for manual review.
 
-- **🟢 Widely Available** (95%+) — safe for production
-- **🔵 Newly Available** (85-94%) — recently stable, verify target browsers
-- **🟡 Limited Availability** (70-84%) — use with progressive enhancement
-- **🟣 Experimental** (<70%) — cutting-edge, use cautiously
+## Repository Map
+
+- `SKILL.md` — agent instructions and routing
+- `references/live-mdn-fetch.md` — trusted live-data workflow
+- `references/rules/` — CSS-first decision rules
+- `css-demos/INDEX.md` — full demo catalog
+- `css-demos/` — production-oriented CSS examples by category
+- `scripts/update_baseline.py` — repeatable Baseline snapshot updater
+- `scripts/test_update_baseline.py` — updater regression tests
+- `agents/openai.yaml` — Codex UI metadata
+
+## Chrome 148–152 Coverage
+
+The catalog includes name-only and comma-separated container queries, expanded
+`@supports`, `revert-rule`, gap decorations, shape improvements, animatable `zoom`,
+`text-fit`, modern image values, `background-clip: border-area`, print margin safety,
+balanced flex wrapping, overscroll chaining, SVG path length, ruby overhang, media
+state pseudo-classes, relative alpha, installed-app drag regions, and accent colors.
+
+See [`css-demos/INDEX.md`](css-demos/INDEX.md) for current labels and source links.
 
 ## License
 

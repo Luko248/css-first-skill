@@ -256,6 +256,6 @@ Before suggesting CSS, check:
 
 ## Remember
 
-**Logical properties are not just for RTL languages. They're best practice for ALL CSS in 2024+.**
+**Logical properties are not just for RTL languages. They are the default for modern CSS.**
 
 Modern CSS should be international-ready by default. Think in terms of **inline** (reading direction) and **block** (paragraph flow), not left/right/top/bottom.

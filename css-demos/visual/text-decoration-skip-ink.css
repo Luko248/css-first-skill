@@ -3,14 +3,15 @@
  *
  * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-skip-ink
  * Reference: https://developer.chrome.com/blog/chrome-148-beta
- * Baseline: `all` keyword 🔵 Newly Available (since May 2026)
- * Support: Chrome 148+, Firefox 75+, Safari 15.4+ (auto / none widely available)
+ * WebStatus: text-decoration-skip-ink-all
+ * Baseline: 🔵 Newly Available
+ * Support: Chrome 148+, Firefox 75+, Safari 15.4+
  *
  * Task: Control how underlines and overlines skip over glyph descenders
  * Why: `auto` skips ink for most scripts but deliberately leaves CJK glyphs
  *      un-skipped; `all` forces ink-skipping for EVERY glyph, giving a
  *      consistent underline across mixed Latin + CJK text
- * Last verified: 2026-05
+ * Last verified: 2026-08-11
  */
 
 

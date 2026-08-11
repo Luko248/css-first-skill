@@ -178,9 +178,36 @@ them straight to `/v1/features/<feature-id>`.
 | `prefers-reduced-transparency` | `prefers-reduced-transparency` |
 | `forced-colors` | `forced-colors` |
 
+#### Chrome 148–152 additions with WebStatus records
+| CSS Feature | feature ID |
+|---|---|
+| `@supports at-rule()` | `supports-at-rule` |
+| Gap decorations | `gap-decorations` |
+| `text-decoration-skip-ink: all` | `text-decoration-skip-ink-all` |
+| `image-rendering: crisp-edges` | `crisp-edges` |
+| Animatable `zoom` | `zoom` |
+| `text-fit` | `text-fit` |
+| `background-clip: border-area` | `background-clip-border-area` |
+| Image values in `light-dark()` | `light-dark-image` |
+| Media-state pseudo-classes | `media-pseudos` |
+| `ruby-overhang` | `ruby-overhang` |
+
+Features such as name-only or comma-separated container queries, `revert-rule`,
+`named-feature()`, `flex-wrap: balance`, `overscroll-behavior: chain`, CSS URL request
+modifiers, `path-length`, `alpha()`, and `window-drag` may not have a dedicated record.
+Keep their status manual and cite the Chrome release note/specification until an exact
+record exists. Do not substitute a related feature ID.
+
 > If a feature isn't listed, find its ID with the search endpoint
 > (`?q=<name>`) and read `feature_id` from a result. A `404` means the feature
-> has no Baseline entry yet — treat it as 🟣 Experimental.
+> has no Baseline entry yet — treat it as 🟣 Experimental / unknown.
+
+## Refresh the checked-in catalog
+
+Run `python3 scripts/update_baseline.py --check` from the skill root to report drift.
+Run it with `--write` to update mapped demo headers and the matching index entries.
+The updater validates typed fields, uses only `api.webstatus.dev`, and leaves features
+without an exact WebStatus record for manual review.
 
 ---
 
